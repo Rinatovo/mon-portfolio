@@ -256,7 +256,15 @@ const Masonry = ({
 
   return (
     <div ref={containerRef} className="masonry-list">
-      {grid.map(item => {
+      {!imagesReady && (
+        <div className="masonry-loader-container">
+          <div className="masonry-loader">
+            <div className="masonry-spinner"></div>
+            <p className="masonry-loader-text">Chargement des photos...</p>
+          </div>
+        </div>
+      )}
+      {imagesReady && grid.map(item => {
         return (
           <div
             key={item.id}
