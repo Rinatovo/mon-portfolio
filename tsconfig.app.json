@@ -20,6 +20,10 @@
     "strict": false,
     "noImplicitAny": false,
     "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": false,
+    "alwaysStrict": false,
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]
