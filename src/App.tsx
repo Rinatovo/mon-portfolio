@@ -53,7 +53,7 @@ export default function App() {
       tech: "NestJS • TypeScript • MariaDB • TypeORM • Redis • JWT • Docker",
       description: "Billzy est une API REST robuste de gestion de facturation développée avec NestJS. Elle permet aux entreprises de gérer clients, utilisateurs et articles de facturation dans une architecture multi-tenant sécurisée. Authentification JWT (cookies HTTP-only), hachage des mots de passe avec Bcrypt, et protection HTTP via Helmet. MariaDB est gérée avec TypeORM (migrations et seeders). Redis est utilisé pour les sessions et la gestion des codes OTP. Conteneurisation avec Docker et Docker Compose; Dev Containers pour le développement.",
       github: "https://github.com/Rinatovo/my-invoice-api",
-      image: '/projet/bilzy.png'
+      image: '/projet/Bilzy.png'
     },
     {
       title: "PROJET CYNA 2025",
