@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+/* Ensure the app background covers the whole viewport (prevents white bars on mobile) */
+html, body, #root {
+	background: #020202;
+	height: 100%;
+}

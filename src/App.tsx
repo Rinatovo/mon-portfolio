@@ -133,7 +133,7 @@ export default function App() {
   };
 
   return (
-    <div className={`relative w-full h-[100dvh] bg-[#020202] text-white overflow-hidden font-sans flex flex-col items-center justify-center ${active ? 'cursor-auto' : ''}`}>
+    <div className={`relative w-full min-h-screen bg-[#020202] text-white overflow-hidden font-sans flex flex-col items-center justify-center ${active ? 'cursor-auto' : ''}`}>
       <CardNav
         title="LE PORTFOLIO DE RINA"
         items={items}
