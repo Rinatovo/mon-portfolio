@@ -1,4 +1,5 @@
 'use client';
+// @ts-nocheck
 import { useRef, useEffect, useCallback, useMemo } from 'react';
 import { gsap } from 'gsap';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';

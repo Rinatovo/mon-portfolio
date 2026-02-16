@@ -125,6 +125,7 @@ export default function App() {
         buttonBgColor="#111"
         buttonTextColor="#fff"
         ease="power3.out"
+        logo={null}
       />
       
       {!active && (
@@ -139,6 +140,7 @@ export default function App() {
           shockStrength={5}
           resistance={750}
           returnDuration={1.5}
+          style={{}}
         />
       </div>
       )}

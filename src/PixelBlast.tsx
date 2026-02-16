@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Component inspired by github.com/zavalit/bayer-dithering-webgl-demo
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';

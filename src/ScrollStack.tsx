@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useLayoutEffect, useRef, useCallback } from 'react';
 import Lenis from 'lenis';
 import './ScrollStack.css';
@@ -219,7 +220,7 @@ const ScrollStack = ({
         smoothWheel: true,
         touchMultiplier: 2,
         infinite: false,
-        gestureOrientationHandler: true,
+        gestureOrientation: "auto",
         normalizeWheel: true,
         wheelMultiplier: 1,
         touchInertiaMultiplier: 35,

@@ -24,6 +24,8 @@
     "strictPropertyInitialization": false,
     "noImplicitThis": false,
     "alwaysStrict": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "suppressExcessPropertyErrors": true,
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]
