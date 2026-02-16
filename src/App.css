@@ -43,6 +43,26 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* Responsive tweaks for mobile */
+@media (max-width: 640px) {
+  .portfolio-title {
+    font-size: 1.25rem;
+  }
+
+  .awaiting-text {
+    font-size: 0.65rem;
+  }
+
+  .logo {
+    height: 3.5em;
+    padding: 0.8em;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -61,6 +81,9 @@
 .card {
   padding: 2em;
 }
+
+/* Utility class to use the Press Start 2P font without forcing size/color */
+/* (removed custom Press Start 2P utilities) */
 
 .read-the-docs {
   color: #888;

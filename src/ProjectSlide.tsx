@@ -15,8 +15,8 @@ interface ProjectSlideProps {
 
 export default function ProjectSlide({ project }: ProjectSlideProps) {
   return (
-    <div className="snap-center shrink-0 w-[90%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto">
-      <h3 className="text-3xl font-bold text-blue-400 mb-4">{project.title}</h3>
+    <div className="snap-center shrink-0 w-[92%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto">
+      <h3 className="text-2xl md:text-3xl font-bold text-blue-400 mb-4">{project.title}</h3>
       <div className="space-y-4">
         <div>
           {project.image && <img src={project.image} alt={project.title} className="w-full h-48 object-cover rounded-lg mb-4" />}

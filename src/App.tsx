@@ -36,14 +36,31 @@ export default function App() {
   ];
 
   const galleryItems = [
-    { id: "1", img: '/galerie/DSCF0433.jpg', height: 600 },
-    { id: "2", img: '/galerie/DSCF1596.jpg', height: 400 },
-    { id: "3", img: '/galerie/DSCF2523-Modifier.jpg', height: 500 },
-    { id: "4", img: '/galerie/DSCF2616-Modifier.jpg', height: 450 },
-    { id: "5", img: '/galerie/DSCF3351.jpg', height: 350 },
-    { id: "6", img: '/galerie/DSCF5467.jpg', height: 550 },
-    { id: "7", img: '/galerie/DSCF5578-Modifier.jpg', height: 400 },
-    { id: "8", img: '/galerie/DSCF7381.JPG', height: 500 },
+    { id: "1", img: '/galerie/DSCF0433.jpg', height: 500 },
+    { id: "2", img: '/galerie/DSCF1254.jpg', height: 500 },
+    { id: "3", img: '/galerie/DSCF1596.jpg', height: 500 },
+    { id: "4", img: '/galerie/DSCF1828.jpg', height: 500 },
+    { id: "5", img: '/galerie/DSCF2523-Modifier.jpg', height: 500 },
+    { id: "6", img: '/galerie/DSCF2616-Modifier.jpg', height: 500 },
+    { id: "7", img: '/galerie/DSCF3351.jpg', height: 500 },
+    { id: "8", img: '/galerie/DSCF5467.jpg', height: 500 },
+    { id: "9", img: '/galerie/DSCF5517-Modifier.jpg', height: 500 },
+    { id: "10", img: '/galerie/DSCF5578-Modifier.jpg', height: 500 },
+    { id: "11", img: '/galerie/DSCF5980.jpg', height: 500 },
+    { id: "12", img: '/galerie/DSCF5991.jpg', height: 500 },
+    { id: "13", img: '/galerie/DSCF6161.jpg', height: 500 },
+    { id: "14", img: '/galerie/DSCF6202.jpg', height: 500 },
+    { id: "15", img: '/galerie/DSCF6508.jpg', height: 500 },
+    { id: "16", img: '/galerie/DSCF6579.jpg', height: 500 },
+    { id: "17", img: '/galerie/DSCF6632.jpg', height: 500 },
+    { id: "18", img: '/galerie/DSCF6640.jpg', height: 500 },
+    { id: "19", img: '/galerie/DSCF6902.jpg', height: 500 },
+    { id: "20", img: '/galerie/DSCF6997.jpg', height: 500 },
+    { id: "21", img: '/galerie/DSCF7127.jpg', height: 500 },
+    { id: "22", img: '/galerie/DSCF7201.jpg', height: 500 },
+    { id: "23", img: '/galerie/DSCF7376.jpg', height: 500 },
+    { id: "24", img: '/galerie/DSCF7381.jpg', height: 500 },
+    { id: "25", img: '/galerie/DSCF7461.jpg', height: 500 }
   ];
 
   const projects = [
@@ -147,11 +164,11 @@ export default function App() {
 
       
       {/* 4. CONTENEUR PRINCIPAL */}
-      <main className="relative z-10 flex flex-row items-center justify-center w-full max-w-6xl">
+      <main className="relative z-10 flex flex-col md:flex-row items-center justify-center w-full max-w-6xl gap-6 md:gap-0 px-4 md:px-0">
 
         {/* SECTION DÉVELOPPEUR */}
         <motion.div
-          className="cursor-target group relative -mr-12 md:-mr-16 will-change-transform"
+          className="cursor-target group relative -mr-6 md:-mr-16 will-change-transform"
           onHoverStart={() => setHovered('dev')}
           onHoverEnd={() => setHovered(null)}
           onClick={() => setActive('dev')}
@@ -161,7 +178,7 @@ export default function App() {
           <div className={`absolute inset-0 bg-blue-500/10 blur-[100px] transition-opacity duration-500 ${hovered === 'dev' ? 'opacity-100' : 'opacity-0'}`} />
           <img
             src={hovered === 'dev' ? "/pcoff.png" : "/pcon.png"}
-            className="w-[26rem] md:w-[38rem] max-w-none drop-shadow-[0_25px_50px_rgba(0,0,0,0.9)] transition-all duration-300 brightness-90 group-hover:brightness-110"
+            className="w-[16rem] sm:w-[22rem] md:w-[38rem] max-w-none drop-shadow-[0_25px_50px_rgba(0,0,0,0.9)] transition-all duration-300 brightness-90 group-hover:brightness-110"
             alt="Dev Mode"
           />
         </motion.div>
@@ -178,14 +195,14 @@ export default function App() {
           <div className={`absolute inset-0 bg-orange-500/10 blur-[100px] transition-opacity duration-500 ${hovered === 'photo' ? 'opacity-100' : 'opacity-0'}`} />
           <img
             src={hovered === 'photo' ? "/camon.png" : "/cam.png"}
-            className="w-[22rem] md:w-[34rem] max-w-none drop-shadow-[0_25px_50px_rgba(0,0,0,0.9)] transition-all duration-300 brightness-75 group-hover:brightness-110"
+            className="w-[14rem] sm:w-[20rem] md:w-[34rem] max-w-none drop-shadow-[0_25px_50px_rgba(0,0,0,0.9)] transition-all duration-300 brightness-75 group-hover:brightness-110"
             alt="Photo Mode"
           />
         </motion.div>
       </main>
 
       {/* 5. FOOTER */}
-      <footer className="absolute bottom-12 w-full flex flex-col items-center justify-center z-50 pointer-events-none">
+      <footer className="absolute bottom-6 md:bottom-12 w-full flex flex-col items-center justify-center z-40 pointer-events-none">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -204,7 +221,7 @@ export default function App() {
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="absolute inset-0 z-50 flex items-center justify-center bg-black/90 p-6"
+            className="absolute inset-0 z-[999] flex items-center justify-center bg-black/90 p-6"
             onClick={() => setActive(null)}
           >
             <motion.div
@@ -212,7 +229,7 @@ export default function App() {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 30 }}
               transition={{ duration: 0.2 }}
-              className="relative w-full max-w-6xl h-[85vh] bg-[#0a0a0a]/90 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-6 md:p-10 shadow-2xl overflow-hidden"
+              className="relative w-full max-w-full md:max-w-6xl h-[85vh] bg-[#0a0a0a]/90 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-6 md:p-10 shadow-2xl overflow-hidden"
               onClick={(e: MouseEvent) => e.stopPropagation()}
             >
               <button onClick={() => setActive(null)} className="absolute top-10 right-10 text-white/20 hover:text-white text-3xl z-10 transition-colors">✕</button>
@@ -231,8 +248,8 @@ export default function App() {
                     style={{ scrollbarWidth: 'none' }}
                   >
 
-                  <div className="snap-center shrink-0 w-[90%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto">
-                    <h3 className="text-3xl font-bold text-blue-400 mb-4">DIPLÔMES ET FORMATION</h3>
+                  <div className="snap-center shrink-0 w-[92%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto">
+                    <h3 className="text-2xl md:text-3xl font-bold text-blue-400 mb-4">DIPLÔMES ET FORMATION</h3>
                     <div className="space-y-3">
                       <div>
                         <p className="font-semibold text-white">CFA INGETIS Paris</p>
@@ -247,8 +264,8 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="snap-center shrink-0 w-[90%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto">
-                    <h3 className="text-3xl font-bold text-blue-400 mb-4">EXPÉRIENCES PROFESSIONNELLES</h3>
+                  <div className="snap-center shrink-0 w-[92%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto">
+                    <h3 className="text-2xl md:text-3xl font-bold text-blue-400 mb-4">EXPÉRIENCES PROFESSIONNELLES</h3>
                     <div className="space-y-4">
                       <div>
                         <p className="font-semibold text-white">ADNCLY - Stagiaire Développeur Web Fullstack</p>
@@ -272,9 +289,9 @@ export default function App() {
                   </div>
 
                   {projects.map((project, index) => (
-                    <div key={index} className="snap-center shrink-0 w-[90%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto flex flex-col">
+                    <div key={index} className="snap-center shrink-0 w-[92%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto flex flex-col">
                       <div className="flex justify-between items-center mb-4">
-                        <h3 className="text-3xl font-bold text-blue-400">PROJET {index + 1}</h3>
+                        <h3 className="text-2xl md:text-3xl font-bold text-blue-400">PROJET {index + 1}</h3>
                         {project.github && project.github !== '#' && (
                           <a 
                             href={project.github} 
@@ -312,8 +329,8 @@ export default function App() {
                     </div>
                   ))}
 
-                  <div className="snap-center shrink-0 w-[90%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto">
-                    <h3 className="text-3xl font-bold text-blue-400 mb-4">COMPÉTENCES TECHNIQUES</h3>
+                  <div className="snap-center shrink-0 w-[92%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto">
+                    <h3 className="text-2xl md:text-3xl font-bold text-blue-400 mb-4">COMPÉTENCES TECHNIQUES</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <p className="text-white/90 font-semibold mb-2">Frontend</p>
@@ -334,8 +351,8 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="snap-center shrink-0 w-[90%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto">
-                    <h3 className="text-3xl font-bold text-blue-400 mb-4">LANGUES</h3>
+                  <div className="snap-center shrink-0 w-[92%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto">
+                    <h3 className="text-2xl md:text-3xl font-bold text-blue-400 mb-4">LANGUES</h3>
                     <div className="space-y-2">
                       <p className="text-white/80"><span className="font-semibold">Français</span> - Natif</p>
                       <p className="text-white/80"><span className="font-semibold">Anglais</span> - Courant (C1)</p>
@@ -343,8 +360,8 @@ export default function App() {
                     </div>
                   </div>
 
-                  <div className="snap-center shrink-0 w-[90%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto flex flex-col items-center justify-center">
-                    <h3 className="text-3xl font-bold text-blue-400 mb-8 text-center">RESTEZ EN CONTACT</h3>
+                  <div className="snap-center shrink-0 w-[92%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto flex flex-col items-center justify-center">
+                    <h3 className="text-2xl md:text-3xl font-bold text-blue-400 mb-8 text-center">RESTEZ EN CONTACT</h3>
                     <div className="flex flex-col gap-6 w-full">
                       <a
                         href="mailto:rinatovo2103@gmail.com"
@@ -438,8 +455,8 @@ export default function App() {
                   </div>
               ) : (
                 <div className="h-full flex flex-col">
-                  <h2 className="text-6xl font-light tracking-[0.3em] mb-4 text-orange-500/80 uppercase z-10 relative pointer-events-none">Galerie.</h2>
-                  <div className="flex-1 w-full min-h-0 relative">
+                  <h2 className="text-4xl md:text-5xl font-black italic tracking-tighter mb-1 text-orange-500/80">GALERIE.</h2>
+                  <div className="flex-1 w-full min-h-0 relative overflow-auto">
                     <Masonry
                       items={galleryItems}
                       ease="power3.out"
@@ -471,7 +488,7 @@ export default function App() {
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95 p-4"
+            className="fixed inset-0 z-[999] flex items-center justify-center bg-black/95 p-4"
             onClick={() => setSelectedPhoto(null)}
           >
             <motion.div

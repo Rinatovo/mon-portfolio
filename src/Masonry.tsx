@@ -145,6 +145,24 @@ const Masonry = ({
     });
   }, [columns, items, width]);
 
+  // Ensure the container has the correct height so the parent can scroll.
+  useLayoutEffect(() => {
+    if (!containerRef.current) return;
+    if (!width) return;
+
+    const colHeights = new Array(columns).fill(0);
+    const columnWidth = width / columns;
+    items.forEach(child => {
+      const col = colHeights.indexOf(Math.min(...colHeights));
+      const height = child.height / 2;
+      colHeights[col] += height;
+    });
+
+    const totalHeight = Math.max(...colHeights, 0);
+    // Add small padding to avoid clipping
+    containerRef.current.style.height = `${Math.ceil(totalHeight)}px`;
+  }, [grid, columns, items, width]);
+
   const hasMounted = useRef(false);
 
   useLayoutEffect(() => {
@@ -244,11 +262,39 @@ const Masonry = ({
             key={item.id}
             data-key={item.id}
             className="masonry-item-wrapper"
-            onClick={() => onImageClick ? onImageClick(item) : item.url && window.open(item.url, '_blank', 'noopener')}
             onMouseEnter={e => handleMouseEnter(e, item)}
             onMouseLeave={e => handleMouseLeave(e, item)}
           >
-            <div className="masonry-item-img" style={{ backgroundImage: `url(${item.img})` }}>
+            <div className="masonry-item-img" role="button" tabIndex={0}>
+              <img
+                src={item.img}
+                alt={item.id}
+                loading="lazy"
+                className="masonry-img-element"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (onImageClick) {
+                    onImageClick(item);
+                  } else if (item.url) {
+                    window.open(item.url, '_blank', 'noopener');
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (onImageClick) {
+                      onImageClick(item);
+                    } else if (item.url) {
+                      window.open(item.url, '_blank', 'noopener');
+                    }
+                  }
+                }}
+                onLoad={(e) => {
+                  const img = e.currentTarget as HTMLImageElement;
+                  img.classList.add('loaded');
+                }}
+              />
               {colorShiftOnHover && (
                 <div
                   className="masonry-color-overlay"
