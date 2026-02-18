@@ -44,7 +44,7 @@ export default function App() {
     }
   ];
 
-  const galleryItems = [
+  const galleryItems: GalleryItem[] = [
     { id: "1", img: '/galerie/DSCF0433.jpg', height: 500 ,orientation: 'horizontal' },
     { id: "2", img: '/galerie/DSCF1254.jpg', height: 500 ,orientation: 'vertical' },
     { id: "3", img: '/galerie/DSCF1596.jpg', height: 500  ,orientation: 'vertical' },
