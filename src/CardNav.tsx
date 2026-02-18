@@ -158,8 +158,16 @@ const CardNav = ({
             type="button"
             className="card-nav-cta-button"
             style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+            onClick={() => {
+              const link = document.createElement('a');
+              link.href = '/projet/CVRINA.pdf';
+              link.download = 'CV_Rina.pdf';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }}
           >
-            Get Started
+            Télécharger CV
           </button>
         </div>
 

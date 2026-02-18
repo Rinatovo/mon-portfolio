@@ -1,7 +1,6 @@
 /* c:\Users\rinas\Documents\potfolio\mon-portfolio\src\App.tsx */
 import { useState, useRef, type MouseEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Masonry from './Masonry';
 import DotGrid from './DotGrid';
 import CardNav from './CardNav';
 import './App.css';
@@ -14,6 +13,7 @@ interface GalleryItem {
   id: string;
   img: string;
   height: number;
+  orientation?: 'vertical' | 'horizontal';
 }
 
 export default function App() {
@@ -21,12 +21,21 @@ export default function App() {
   const [hovered, setHovered] = useState<Section>(null);
   const [selectedPhoto, setSelectedPhoto] = useState<GalleryItem | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
 
   const items = [
     {
-      label: "Contact",
+      label: "RESEAUX SOCIAUX",
       bgColor: "rgba(255, 255, 255, 0.05)", 
       textColor: "#fff",
+      onClick: () => {
+        const link = document.createElement('a');
+        link.href = '/projet/CV.pdf';
+        link.download = 'CV_Rina.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      },
       links: [
         { label: "Email", ariaLabel: "Email", href: "mailto:rinatovo2103@gmail.com" },
         { label: "LinkedIn", ariaLabel: "LinkedIn", href: "https://www.linkedin.com/in/rinatovo/" },
@@ -36,7 +45,7 @@ export default function App() {
   ];
 
   const galleryItems = [
-    { id: "1", img: '/galerie/DSCF0433.jpg', height: 500 },
+    { id: "1", img: '/galerie/DSCF0433.jpg', height: 500 ,orientation: 'horizontal' },
     { id: "2", img: '/galerie/DSCF1254.jpg', height: 500 },
     { id: "3", img: '/galerie/DSCF1596.jpg', height: 500 },
     { id: "4", img: '/galerie/DSCF1828.jpg', height: 500 },
@@ -45,11 +54,12 @@ export default function App() {
     { id: "7", img: '/galerie/DSCF3351.jpg', height: 500 },
     { id: "8", img: '/galerie/DSCF5467.jpg', height: 500 },
     { id: "9", img: '/galerie/DSCF5517-Modifier.jpg', height: 500 },
-    { id: "10", img: '/galerie/DSCF5578-Modifier.jpg', height: 500 },
-    { id: "11", img: '/galerie/DSCF5980.jpg', height: 500 },
+    { id: "10", img: '/galerie/DSCF5578-Modifier.jpg', height: 500 ,orientation: 'horizontal'  },
+    { id: "11", img: '/galerie/DSCF6202.jpg', height: 500 },
+    
     { id: "12", img: '/galerie/DSCF5991.jpg', height: 500 },
-    { id: "13", img: '/galerie/DSCF6161.jpg', height: 500 },
-    { id: "14", img: '/galerie/DSCF6202.jpg', height: 500 },
+    { id: "13", img: '/galerie/DSCF6161.jpg', height: 500 ,orientation: 'horizontal' },
+    { id: "14", img: '/galerie/DSCF5980.jpg', height: 500 ,orientation: 'horizontal'  },
     { id: "15", img: '/galerie/DSCF6508.jpg', height: 500 },
     { id: "16", img: '/galerie/DSCF6579.jpg', height: 500 },
     { id: "17", img: '/galerie/DSCF6632.jpg', height: 500 },
@@ -57,10 +67,8 @@ export default function App() {
     { id: "19", img: '/galerie/DSCF6902.jpg', height: 500 },
     { id: "20", img: '/galerie/DSCF6997.jpg', height: 500 },
     { id: "21", img: '/galerie/DSCF7127.jpg', height: 500 },
-    { id: "22", img: '/galerie/DSCF7201.jpg', height: 500 },
-    { id: "23", img: '/galerie/DSCF7376.jpg', height: 500 },
-    { id: "24", img: '/galerie/DSCF7381.jpg', height: 500 },
-    { id: "25", img: '/galerie/DSCF7461.jpg', height: 500 }
+    { id: "22", img: '/galerie/DSCF7381.jpg', height: 500 },
+    { id: "23", img: '/galerie/DSCF7461.jpg', height: 500 }
   ];
 
   const projects = [
@@ -89,6 +97,12 @@ export default function App() {
       image: null
     }
   ];
+
+  const handleContainerScroll = () => {
+    if (scrollContainerRef.current) {
+      setShowLeftArrow(scrollContainerRef.current.scrollLeft > 10);
+    }
+  };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
@@ -221,7 +235,7 @@ export default function App() {
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="absolute inset-0 z-[999] flex items-center justify-center bg-black/90 p-6"
+            className={`absolute inset-0 z-[999] flex items-center justify-center p-6 ${active === 'photo' ? 'bg-white' : 'bg-black/90'}`}
             onClick={() => setActive(null)}
           >
             <motion.div
@@ -229,24 +243,36 @@ export default function App() {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 30 }}
               transition={{ duration: 0.2 }}
-              className="relative w-full max-w-full md:max-w-6xl h-[85vh] bg-[#0a0a0a]/90 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-6 md:p-10 shadow-2xl overflow-hidden"
+              className={`relative w-full max-w-full md:max-w-6xl h-[85vh] rounded-[2rem] p-6 md:p-10 shadow-2xl overflow-hidden ${active === 'photo' ? 'bg-white' : 'bg-[#0a0a0a]/90 backdrop-blur-2xl border border-white/10'}`}
               onClick={(e: MouseEvent) => e.stopPropagation()}
             >
-              <button onClick={() => setActive(null)} className="absolute top-10 right-10 text-white/20 hover:text-white text-3xl z-10 transition-colors">✕</button>
-
               {active === 'dev' ? (
                 <div className="h-full flex flex-col relative">
-                  <div className="mb-4 shrink-0">
-                    <h2 className="text-4xl md:text-5xl font-black italic tracking-tighter mb-1 text-blue-500">PROFIL.</h2>
-                    <p className="text-white/60 text-sm md:text-base">Développeur Full-Stack passionné par les technologies modernes et l'innovation</p>
+                  <div className="mb-4 shrink-0 flex items-center justify-between">
+                    <h2 className="text-4xl md:text-5xl font-black italic tracking-tighter text-blue-500">PROFIL.</h2>
+                    <button onClick={() => setActive(null)} className="text-blue-500 hover:text-blue-400 text-3xl transition-colors leading-none">✕</button>
                   </div>
+                  <p className="text-white/60 text-sm md:text-base mb-4">Développeur Full-Stack passionné par les technologies modernes et l'innovation</p>
 
                   <div 
                     ref={scrollContainerRef}
                     onWheel={handleWheel}
+                    onScroll={handleContainerScroll}
                     className="flex-1 w-full min-h-0 overflow-x-auto flex gap-6 pb-4 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden"
                     style={{ scrollbarWidth: 'none' }}
                   >
+
+                  <div className="snap-center shrink-0 w-[92%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-8">
+                    <div className="shrink-0">
+                      <img src="/projet/rina3.jpg" alt="Photo de profil de Rina Rasolonjatovo" className="w-40 h-40 rounded-full object-cover border-4 border-blue-500/50" />
+                    </div>
+                    <div className="max-w-md">
+                      <h3 className="text-2xl md:text-3xl font-bold text-blue-400 mb-2">Rina Rasolonjatovo</h3>
+                      <p className="text-white/80">
+                        Développeur Full-Stack avec une appétence pour le design et les belles interfaces. Voici un bref résumé de mon parcours et de mes compétences. N'hésitez pas à explorer mes projets et expériences.
+                      </p>
+                    </div>
+                  </div>
 
                   <div className="snap-center shrink-0 w-[92%] md:w-[600px] h-full bg-white/5 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-blue-500/10 overflow-y-auto">
                     <h3 className="text-2xl md:text-3xl font-bold text-blue-400 mb-4">DIPLÔMES ET FORMATION</h3>
@@ -418,9 +444,10 @@ export default function App() {
                   <motion.div 
                     className="absolute left-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex items-center justify-center cursor-pointer group"
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8, duration: 0.5 }}
+                    animate={{ opacity: showLeftArrow ? 1 : 0 }}
+                    transition={{ duration: 0.3 }}
                     onClick={scrollLeft}
+                    style={{ pointerEvents: showLeftArrow ? 'auto' : 'none' }}
                   >
                     <motion.div
                       animate={{ x: [0, -10, 0] }}
@@ -454,21 +481,52 @@ export default function App() {
 
                   </div>
               ) : (
-                <div className="h-full flex flex-col">
-                  <h2 className="text-4xl md:text-5xl font-black italic tracking-tighter mb-1 text-orange-500/80">GALERIE.</h2>
-                  <div className="flex-1 w-full min-h-0 relative overflow-auto">
-                    <Masonry
-                      items={galleryItems}
-                      ease="power3.out"
-                      duration={0.6}
-                      stagger={0.05}
-                      animateFrom="bottom"
-                      scaleOnHover={true}
-                      hoverScale={0.95}
-                      blurToFocus={true}
-                      colorShiftOnHover={false}
-                      onImageClick={(item) => setSelectedPhoto(item)}
-                    />
+                <div className="h-full w-full flex flex-col bg-white">
+                  <div className="px-6 md:px-10 pt-6 md:pt-10 shrink-0 flex items-center justify-between">
+                    <h2 className="text-4xl md:text-5xl font-black italic tracking-tighter text-black">GALERIE.</h2>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href="https://www.instagram.com/err.raw/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                        aria-label="Instagram"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-orange-500 hover:text-orange-600">
+                          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                          <circle cx="17.5" cy="6.5" r="1.5"></circle>
+                        </svg>
+                      </a>
+                      <button 
+                        onClick={() => setActive(null)} 
+                        className="p-2 hover:bg-gray-100 rounded-full transition-colors text-orange-500 hover:text-orange-600 text-3xl leading-none"
+                        aria-label="Fermer"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  </div>
+                  <div className="flex-1 w-full min-h-0 overflow-auto">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 p-4 pb-24 grid-flow-dense">
+                      {galleryItems.map((item) => (
+                        <div
+                          key={item.id}
+                          className={`relative group overflow-hidden rounded-xl cursor-pointer bg-gray-100 ${
+                            item.orientation === 'horizontal' ? 'col-span-2 aspect-[4/3]' : 'col-span-1 aspect-[2/3]'
+                          }`}
+                          onClick={() => setSelectedPhoto(item)}
+                        >
+                          <img
+                            src={item.img}
+                            alt={`Photo ${item.id}`}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
@@ -519,4 +577,3 @@ export default function App() {
     </div>
   );
 }
-
