@@ -89,30 +89,37 @@ const CardNav = ({
   }, [ease, items]);
 
   useLayoutEffect(() => {
+    let resizeTimer;
     const handleResize = () => {
-      if (!tlRef.current) return;
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (!tlRef.current) return;
 
-      if (isExpanded) {
-        const newHeight = calculateHeight();
-        gsap.set(navRef.current, { height: newHeight });
+        if (isExpanded) {
+          const newHeight = calculateHeight();
+          gsap.set(navRef.current, { height: newHeight });
 
-        tlRef.current.kill();
-        const newTl = createTimeline();
-        if (newTl) {
-          newTl.progress(1);
-          tlRef.current = newTl;
+          tlRef.current.kill();
+          const newTl = createTimeline();
+          if (newTl) {
+            newTl.progress(1);
+            tlRef.current = newTl;
+          }
+        } else {
+          tlRef.current.kill();
+          const newTl = createTimeline();
+          if (newTl) {
+            tlRef.current = newTl;
+          }
         }
-      } else {
-        tlRef.current.kill();
-        const newTl = createTimeline();
-        if (newTl) {
-          tlRef.current = newTl;
-        }
-      }
+      }, 100);
     };
 
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(resizeTimer);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isExpanded]);
 

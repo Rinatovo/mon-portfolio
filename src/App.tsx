@@ -16,87 +16,87 @@ interface GalleryItem {
   orientation?: 'vertical' | 'horizontal';
 }
 
+const items = [
+  {
+    label: "RESEAUX SOCIAUX",
+    bgColor: "rgba(255, 255, 255, 0.05)", 
+    textColor: "#fff",
+    onClick: () => {
+      const link = document.createElement('a');
+      link.href = '/projet/CV.pdf';
+      link.download = 'CV_Rina.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    },
+    links: [
+      { label: "Email", ariaLabel: "Email", href: "mailto:rinatovo2103@gmail.com" },
+      { label: "LinkedIn", ariaLabel: "LinkedIn", href: "https://www.linkedin.com/in/rinatovo/" },
+      { label: "GitHub", ariaLabel: "GitHub", href: "https://github.com/Rinatovo" }
+    ]
+  }
+];
+
+const galleryItems: GalleryItem[] = [
+  { id: "1", img: '/galerie/DSCF0433.jpg', height: 500 ,orientation: 'horizontal' },
+  { id: "2", img: '/galerie/DSCF1254.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "3", img: '/galerie/DSCF1596.jpg', height: 500  ,orientation: 'vertical' },
+  { id: "4", img: '/galerie/DSCF1828.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "5", img: '/galerie/DSCF2523-Modifier.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "6", img: '/galerie/DSCF2616-Modifier.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "7", img: '/galerie/DSCF3351.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "8", img: '/galerie/DSCF5467.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "9", img: '/galerie/DSCF5517-Modifier.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "10", img: '/galerie/DSCF5578-Modifier.jpg', height: 500 ,orientation: 'horizontal'  },
+  { id: "11", img: '/galerie/DSCF6202.jpg', height: 500 ,orientation: 'vertical' },
+  
+  { id: "12", img: '/galerie/DSCF5991.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "13", img: '/galerie/DSCF6161.jpg', height: 500 ,orientation: 'horizontal' },
+  { id: "14", img: '/galerie/DSCF5980.jpg', height: 500 ,orientation: 'horizontal'  },
+  { id: "15", img: '/galerie/DSCF6508.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "16", img: '/galerie/DSCF6579.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "17", img: '/galerie/DSCF6632.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "18", img: '/galerie/DSCF6640.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "19", img: '/galerie/DSCF6902.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "20", img: '/galerie/DSCF6997.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "21", img: '/galerie/DSCF7127.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "22", img: '/galerie/DSCF7381.jpg', height: 500 ,orientation: 'vertical' },
+  { id: "23", img: '/galerie/DSCF7461.jpg', height: 500 ,orientation: 'vertical' }
+];
+
+const projects = [
+  {
+    title: "Billzy",
+    subtitle: "API REST de gestion de facturation (Multi-tenant)",
+    tech: "NestJS • TypeScript • MariaDB • TypeORM • Redis • JWT • Docker",
+    description: "Billzy est une API REST robuste de gestion de facturation développée avec NestJS. Elle permet aux entreprises de gérer clients, utilisateurs et articles de facturation dans une architecture multi-tenant sécurisée. Authentification JWT (cookies HTTP-only), hachage des mots de passe avec Bcrypt, et protection HTTP via Helmet. MariaDB est gérée avec TypeORM (migrations et seeders). Redis est utilisé pour les sessions et la gestion des codes OTP. Conteneurisation avec Docker et Docker Compose; Dev Containers pour le développement.",
+    github: "https://github.com/Rinatovo/my-invoice-api",
+    image: '/projet/Bilzy.png'
+  },
+  {
+    title: "PROJET CYNA 2025",
+    subtitle: "Marketplace SaaS Cybersécurité Full-Stack",
+    tech: "React.js • Laravel • MySQL • JWT",
+    description: "Développement full-stack d'une plateforme de cybersécurité avec système d'authentification JWT sécurisé",
+    github: "#",
+    image: null
+  },
+  {
+    title: "CMS E-COMMERCE",
+    subtitle: "CMS Backend pour mini-boutiques sans code",
+    tech: "Node.js • Express.js • MySQL • REST API",
+    description: "Backend robuste permettant la création de boutiques en ligne personnalisables sans code",
+    github: "#",
+    image: null
+  }
+];
+
 export default function App() {
   const [active, setActive] = useState<Section>(null);
   const [hovered, setHovered] = useState<Section>(null);
   const [selectedPhoto, setSelectedPhoto] = useState<GalleryItem | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
-
-  const items = [
-    {
-      label: "RESEAUX SOCIAUX",
-      bgColor: "rgba(255, 255, 255, 0.05)", 
-      textColor: "#fff",
-      onClick: () => {
-        const link = document.createElement('a');
-        link.href = '/projet/CV.pdf';
-        link.download = 'CV_Rina.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      },
-      links: [
-        { label: "Email", ariaLabel: "Email", href: "mailto:rinatovo2103@gmail.com" },
-        { label: "LinkedIn", ariaLabel: "LinkedIn", href: "https://www.linkedin.com/in/rinatovo/" },
-        { label: "GitHub", ariaLabel: "GitHub", href: "https://github.com/Rinatovo" }
-      ]
-    }
-  ];
-
-  const galleryItems: GalleryItem[] = [
-    { id: "1", img: '/galerie/DSCF0433.jpg', height: 500 ,orientation: 'horizontal' },
-    { id: "2", img: '/galerie/DSCF1254.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "3", img: '/galerie/DSCF1596.jpg', height: 500  ,orientation: 'vertical' },
-    { id: "4", img: '/galerie/DSCF1828.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "5", img: '/galerie/DSCF2523-Modifier.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "6", img: '/galerie/DSCF2616-Modifier.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "7", img: '/galerie/DSCF3351.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "8", img: '/galerie/DSCF5467.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "9", img: '/galerie/DSCF5517-Modifier.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "10", img: '/galerie/DSCF5578-Modifier.jpg', height: 500 ,orientation: 'horizontal'  },
-    { id: "11", img: '/galerie/DSCF6202.jpg', height: 500 ,orientation: 'vertical' },
-    
-    { id: "12", img: '/galerie/DSCF5991.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "13", img: '/galerie/DSCF6161.jpg', height: 500 ,orientation: 'horizontal' },
-    { id: "14", img: '/galerie/DSCF5980.jpg', height: 500 ,orientation: 'horizontal'  },
-    { id: "15", img: '/galerie/DSCF6508.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "16", img: '/galerie/DSCF6579.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "17", img: '/galerie/DSCF6632.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "18", img: '/galerie/DSCF6640.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "19", img: '/galerie/DSCF6902.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "20", img: '/galerie/DSCF6997.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "21", img: '/galerie/DSCF7127.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "22", img: '/galerie/DSCF7381.jpg', height: 500 ,orientation: 'vertical' },
-    { id: "23", img: '/galerie/DSCF7461.jpg', height: 500 ,orientation: 'vertical' }
-  ];
-
-  const projects = [
-    {
-      title: "Billzy",
-      subtitle: "API REST de gestion de facturation (Multi-tenant)",
-      tech: "NestJS • TypeScript • MariaDB • TypeORM • Redis • JWT • Docker",
-      description: "Billzy est une API REST robuste de gestion de facturation développée avec NestJS. Elle permet aux entreprises de gérer clients, utilisateurs et articles de facturation dans une architecture multi-tenant sécurisée. Authentification JWT (cookies HTTP-only), hachage des mots de passe avec Bcrypt, et protection HTTP via Helmet. MariaDB est gérée avec TypeORM (migrations et seeders). Redis est utilisé pour les sessions et la gestion des codes OTP. Conteneurisation avec Docker et Docker Compose; Dev Containers pour le développement.",
-      github: "https://github.com/Rinatovo/my-invoice-api",
-      image: '/projet/Bilzy.png'
-    },
-    {
-      title: "PROJET CYNA 2025",
-      subtitle: "Marketplace SaaS Cybersécurité Full-Stack",
-      tech: "React.js • Laravel • MySQL • JWT",
-      description: "Développement full-stack d'une plateforme de cybersécurité avec système d'authentification JWT sécurisé",
-      github: "#",
-      image: null
-    },
-    {
-      title: "CMS E-COMMERCE",
-      subtitle: "CMS Backend pour mini-boutiques sans code",
-      tech: "Node.js • Express.js • MySQL • REST API",
-      description: "Backend robuste permettant la création de boutiques en ligne personnalisables sans code",
-      github: "#",
-      image: null
-    }
-  ];
 
   const handleContainerScroll = () => {
     if (scrollContainerRef.current) {
@@ -523,6 +523,7 @@ export default function App() {
                             alt={`Photo ${item.id}`}
                             className="w-full h-full object-cover"
                             loading="lazy"
+                            decoding="async"
                           />
                         </div>
                       ))}
