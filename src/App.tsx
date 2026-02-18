@@ -46,29 +46,29 @@ export default function App() {
 
   const galleryItems = [
     { id: "1", img: '/galerie/DSCF0433.jpg', height: 500 ,orientation: 'horizontal' },
-    { id: "2", img: '/galerie/DSCF1254.jpg', height: 500 },
-    { id: "3", img: '/galerie/DSCF1596.jpg', height: 500 },
-    { id: "4", img: '/galerie/DSCF1828.jpg', height: 500 },
-    { id: "5", img: '/galerie/DSCF2523-Modifier.jpg', height: 500 },
-    { id: "6", img: '/galerie/DSCF2616-Modifier.jpg', height: 500 },
-    { id: "7", img: '/galerie/DSCF3351.jpg', height: 500 },
-    { id: "8", img: '/galerie/DSCF5467.jpg', height: 500 },
-    { id: "9", img: '/galerie/DSCF5517-Modifier.jpg', height: 500 },
+    { id: "2", img: '/galerie/DSCF1254.jpg', height: 500 ,orientation: 'vertical' },
+    { id: "3", img: '/galerie/DSCF1596.jpg', height: 500  ,orientation: 'vertical' },
+    { id: "4", img: '/galerie/DSCF1828.jpg', height: 500 ,orientation: 'vertical' },
+    { id: "5", img: '/galerie/DSCF2523-Modifier.jpg', height: 500 ,orientation: 'vertical' },
+    { id: "6", img: '/galerie/DSCF2616-Modifier.jpg', height: 500 ,orientation: 'vertical' },
+    { id: "7", img: '/galerie/DSCF3351.jpg', height: 500 ,orientation: 'vertical' },
+    { id: "8", img: '/galerie/DSCF5467.jpg', height: 500 ,orientation: 'vertical' },
+    { id: "9", img: '/galerie/DSCF5517-Modifier.jpg', height: 500 ,orientation: 'vertical' },
     { id: "10", img: '/galerie/DSCF5578-Modifier.jpg', height: 500 ,orientation: 'horizontal'  },
-    { id: "11", img: '/galerie/DSCF6202.jpg', height: 500 },
+    { id: "11", img: '/galerie/DSCF6202.jpg', height: 500 ,orientation: 'vertical' },
     
-    { id: "12", img: '/galerie/DSCF5991.jpg', height: 500 },
+    { id: "12", img: '/galerie/DSCF5991.jpg', height: 500 ,orientation: 'vertical' },
     { id: "13", img: '/galerie/DSCF6161.jpg', height: 500 ,orientation: 'horizontal' },
     { id: "14", img: '/galerie/DSCF5980.jpg', height: 500 ,orientation: 'horizontal'  },
-    { id: "15", img: '/galerie/DSCF6508.jpg', height: 500 },
-    { id: "16", img: '/galerie/DSCF6579.jpg', height: 500 },
-    { id: "17", img: '/galerie/DSCF6632.jpg', height: 500 },
-    { id: "18", img: '/galerie/DSCF6640.jpg', height: 500 },
-    { id: "19", img: '/galerie/DSCF6902.jpg', height: 500 },
-    { id: "20", img: '/galerie/DSCF6997.jpg', height: 500 },
-    { id: "21", img: '/galerie/DSCF7127.jpg', height: 500 },
-    { id: "22", img: '/galerie/DSCF7381.jpg', height: 500 },
-    { id: "23", img: '/galerie/DSCF7461.jpg', height: 500 }
+    { id: "15", img: '/galerie/DSCF6508.jpg', height: 500 ,orientation: 'vertical' },
+    { id: "16", img: '/galerie/DSCF6579.jpg', height: 500 ,orientation: 'vertical' },
+    { id: "17", img: '/galerie/DSCF6632.jpg', height: 500 ,orientation: 'vertical' },
+    { id: "18", img: '/galerie/DSCF6640.jpg', height: 500 ,orientation: 'vertical' },
+    { id: "19", img: '/galerie/DSCF6902.jpg', height: 500 ,orientation: 'vertical' },
+    { id: "20", img: '/galerie/DSCF6997.jpg', height: 500 ,orientation: 'vertical' },
+    { id: "21", img: '/galerie/DSCF7127.jpg', height: 500 ,orientation: 'vertical' },
+    { id: "22", img: '/galerie/DSCF7381.jpg', height: 500 ,orientation: 'vertical' },
+    { id: "23", img: '/galerie/DSCF7461.jpg', height: 500 ,orientation: 'vertical' }
   ];
 
   const projects = [
