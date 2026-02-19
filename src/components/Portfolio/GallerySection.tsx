@@ -13,49 +13,50 @@ interface GalleryItem {
 const galleryItems: GalleryItem[] = [
     // EVENT
     // Horizontal
-    { id: "1", img: '/galerie/event/horizontal/DSCF3131.jpg', height: 500, orientation: 'horizontal', category: 'event' },
-    { id: "2", img: '/galerie/event/horizontal/DSCF3139.jpg', height: 500, orientation: 'horizontal', category: 'event' },
-    { id: "3", img: '/galerie/event/horizontal/DSCF4509.jpg', height: 500, orientation: 'horizontal', category: 'event' },
+    { id: "e-h-1", img: '/galerie/event/horizontal/DSCF3131.jpg', height: 500, orientation: 'horizontal', category: 'event' },
+    { id: "e-h-2", img: '/galerie/event/horizontal/DSCF3139.jpg', height: 500, orientation: 'horizontal', category: 'event' },
+    { id: "e-h-3", img: '/galerie/event/horizontal/DSCF4509.jpg', height: 500, orientation: 'horizontal', category: 'event' },
+    { id: "e-h-4", img: '/galerie/event/horizontal/DSCF5975.jpg', height: 500, orientation: 'horizontal', category: 'event' },
+    { id: "e-h-5", img: '/galerie/event/horizontal/DSCF6014.jpg', height: 500, orientation: 'horizontal', category: 'event' },
     // Vertical
-    { id: "4", img: '/galerie/event/vertical/DSCF3110.jpg', height: 500, orientation: 'vertical', category: 'event' },
-    { id: "5", img: '/galerie/event/vertical/DSCF3156.jpg', height: 500, orientation: 'vertical', category: 'event' },
-    { id: "6", img: '/galerie/event/vertical/DSCF4643.jpg', height: 500, orientation: 'vertical', category: 'event' },
-    { id: "7", img: '/galerie/event/vertical/DSCF4682.jpg', height: 500, orientation: 'vertical', category: 'event' },
-    { id: "8", img: '/galerie/event/vertical/DSCF4728.jpg', height: 500, orientation: 'vertical', category: 'event' },
-    { id: "9", img: '/galerie/event/vertical/IMG_6165.JPG.jpg', height: 500, orientation: 'vertical', category: 'event' },
+    { id: "e-v-1", img: '/galerie/event/vertical/DSCF3110.jpg', height: 500, orientation: 'vertical', category: 'event' },
+    { id: "e-v-2", img: '/galerie/event/vertical/DSCF3156.jpg', height: 500, orientation: 'vertical', category: 'event' },
+    { id: "e-v-3", img: '/galerie/event/vertical/DSCF4643.jpg', height: 500, orientation: 'vertical', category: 'event' },
+    { id: "e-v-4", img: '/galerie/event/vertical/DSCF4682.jpg', height: 500, orientation: 'vertical', category: 'event' },
+    { id: "e-v-5", img: '/galerie/event/vertical/DSCF4728.jpg', height: 500, orientation: 'vertical', category: 'event' },
+    { id: "e-v-6", img: '/galerie/event/vertical/IMG_6165.JPG.jpg', height: 500, orientation: 'vertical', category: 'event' },
 
     // PAYSAGE
     // Horizontal
-    { id: "10", img: '/galerie/paysage/horizontal/DSCF0433 (1).jpg', height: 500, orientation: 'horizontal', category: 'landscape' },
+    { id: "l-h-1", img: '/galerie/paysage/horizontal/DSCF0433 (1).jpg', height: 500, orientation: 'horizontal', category: 'landscape' },
     // Vertical
-    { id: "11", img: '/galerie/paysage/vertical/DSCF2523-Modifier (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
-    { id: "12", img: '/galerie/paysage/vertical/DSCF3351 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
-    { id: "13", img: '/galerie/paysage/vertical/DSCF5467 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
-    { id: "14", img: '/galerie/paysage/vertical/DSCF6202 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
-    { id: "15", img: '/galerie/paysage/vertical/DSCF6508 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
-    { id: "16", img: '/galerie/paysage/vertical/DSCF6579 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
-    { id: "17", img: '/galerie/paysage/vertical/DSCF6632 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
-    { id: "18", img: '/galerie/paysage/vertical/DSCF6640 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
-    { id: "19", img: '/galerie/paysage/vertical/DSCF6997 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
-    { id: "20", img: '/galerie/paysage/vertical/DSCF7127 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
-    { id: "21", img: '/galerie/paysage/vertical/DSCF7461 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
+    { id: "l-v-1", img: '/galerie/paysage/vertical/DSCF2523-Modifier (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
+    { id: "l-v-2", img: '/galerie/paysage/vertical/DSCF3351 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
+    { id: "l-v-3", img: '/galerie/paysage/vertical/DSCF5467 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
+    { id: "l-v-4", img: '/galerie/paysage/vertical/DSCF6202 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
+    { id: "l-v-5", img: '/galerie/paysage/vertical/DSCF6508 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
+    { id: "l-v-6", img: '/galerie/paysage/vertical/DSCF6579 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
+    { id: "l-v-7", img: '/galerie/paysage/vertical/DSCF6632 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
+    { id: "l-v-8", img: '/galerie/paysage/vertical/DSCF6640 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
+    { id: "l-v-9", img: '/galerie/paysage/vertical/DSCF6997 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
+    { id: "l-v-10", img: '/galerie/paysage/vertical/DSCF7127 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
+    { id: "l-v-11", img: '/galerie/paysage/vertical/DSCF7461 (1).jpg', height: 500, orientation: 'vertical', category: 'landscape' },
 
     // PORTRAIT
     // Horizontal
-    { id: "22", img: '/galerie/portrait/horizontal/DSCF5408.jpg', height: 500, orientation: 'horizontal', category: 'portrait' },
-    { id: "23", img: '/galerie/portrait/horizontal/DSCF5578-Modifier (1).jpg', height: 500, orientation: 'horizontal', category: 'portrait' },
-    { id: "24", img: '/galerie/portrait/horizontal/DSCF5980 (1).jpg', height: 500, orientation: 'horizontal', category: 'portrait' },
-    { id: "25", img: '/galerie/portrait/horizontal/DSCF6161 (1).jpg', height: 500, orientation: 'horizontal', category: 'portrait' },
+    { id: "p-h-1", img: '/galerie/portrait/horizontal/DSCF5408.jpg', height: 500, orientation: 'horizontal', category: 'portrait' },
+    { id: "p-h-2", img: '/galerie/portrait/horizontal/DSCF5980 (1).jpg', height: 500, orientation: 'horizontal', category: 'portrait' },
     // Vertical
-    { id: "26", img: '/galerie/portrait/vertical/DSCF1254 (1).jpg', height: 500, orientation: 'vertical', category: 'portrait' },
-    { id: "27", img: '/galerie/portrait/vertical/DSCF1596 (1).jpg', height: 500, orientation: 'vertical', category: 'portrait' },
-    { id: "28", img: '/galerie/portrait/vertical/DSCF1828 (1).jpg', height: 500, orientation: 'vertical', category: 'portrait' },
-    { id: "29", img: '/galerie/portrait/vertical/DSCF5517-Modifier (1).jpg', height: 500, orientation: 'vertical', category: 'portrait' },
-    { id: "30", img: '/galerie/portrait/vertical/DSCF5991 (1).jpg', height: 500, orientation: 'vertical', category: 'portrait' },
-    { id: "31", img: '/galerie/portrait/vertical/DSCF6293.jpg', height: 500, orientation: 'vertical', category: 'portrait' },
-    { id: "32", img: '/galerie/portrait/vertical/DSCF6902 (1).jpg', height: 500, orientation: 'vertical', category: 'portrait' },
-    { id: "33", img: '/galerie/portrait/vertical/DSCF7381 (1).jpg', height: 500, orientation: 'vertical', category: 'portrait' },
-    { id: "34", img: '/galerie/portrait/vertical/DSCF7509.jpg', height: 500, orientation: 'vertical', category: 'portrait' }
+    { id: "p-v-1", img: '/galerie/portrait/vertical/DSCF1254 (1).jpg', height: 500, orientation: 'vertical', category: 'portrait' },
+    { id: "p-v-2", img: '/galerie/portrait/vertical/DSCF1596 (1).jpg', height: 500, orientation: 'vertical', category: 'portrait' },
+    { id: "p-v-3", img: '/galerie/portrait/vertical/DSCF1828 (1).jpg', height: 500, orientation: 'vertical', category: 'portrait' },
+    { id: "p-v-4", img: '/galerie/portrait/vertical/DSCF5517-Modifier (1).jpg', height: 500, orientation: 'vertical', category: 'portrait' },
+    { id: "p-v-5", img: '/galerie/portrait/vertical/DSCF5991 (1).jpg', height: 500, orientation: 'vertical', category: 'portrait' },
+    { id: "p-v-6", img: '/galerie/portrait/vertical/DSCF6161 (1).jpg', height: 500, orientation: 'vertical', category: 'portrait' },
+    { id: "p-v-7", img: '/galerie/portrait/vertical/DSCF6293.jpg', height: 500, orientation: 'vertical', category: 'portrait' },
+    { id: "p-v-8", img: '/galerie/portrait/vertical/DSCF6902 (1).jpg', height: 500, orientation: 'vertical', category: 'portrait' },
+    { id: "p-v-9", img: '/galerie/portrait/vertical/DSCF7381 (1).jpg', height: 500, orientation: 'vertical', category: 'portrait' },
+    { id: "p-v-10", img: '/galerie/portrait/vertical/DSCF7509.jpg', height: 500, orientation: 'vertical', category: 'portrait' }
 ];
 
 interface GallerySectionProps {
@@ -247,10 +248,11 @@ export default function GallerySection({ onBack }: GallerySectionProps) {
                             <img
                                 src={selectedPhoto.img}
                                 alt="Photo agrandie"
-                                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                                className="max-w-full max-h-full object-contain rounded-lg"
+                                decoding="async"
                             />
 
-                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/50 backdrop-blur-md rounded-full text-white text-sm font-mono uppercase border border-white/10">
+                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/80 rounded-full text-white text-sm font-mono uppercase border border-white/10">
                                 {selectedPhoto.category}
                             </div>
                         </motion.div>
