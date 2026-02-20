@@ -100,15 +100,15 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                 onClick={(e: MouseEvent) => e.stopPropagation()}
             >
                 <div className="h-full flex flex-col relative">
-                    <div className="mb-6 shrink-0 flex items-start md:items-center justify-between gap-4">
+                    <div className="mb-4 shrink-0 flex items-start md:items-center justify-between gap-4">
                         <div>
-                            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">PROFIL DEVELOPPEUR</h2>
-                            <div className="h-1 w-16 md:w-24 bg-gradient-to-r from-blue-500 to-transparent mt-1 md:mt-2 rounded-full"></div>
+                            <h2 className="text-2xl md:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">PROFIL DEVELOPPEUR</h2>
+                            <div className="h-1 w-12 md:w-24 bg-gradient-to-r from-blue-500 to-transparent mt-1 md:mt-2 rounded-full"></div>
                         </div>
                         <button onClick={onBack} className="shrink-0 text-white/50 hover:text-white bg-white/5 hover:bg-white/10 p-2 md:p-3 rounded-full transition-all leading-none border border-white/5 hover:border-white/20">✕</button>
                     </div>
 
-                    <p className="text-white/70 text-base md:text-lg mb-8 font-light">Conception et développement d'applications robustes avec un focus sur la performance et l'expérience utilisateur.</p>
+                    <p className="text-white/70 text-sm md:text-lg mb-8 font-light">Conception et développement d'applications robustes avec un focus sur la performance et l'expérience utilisateur.</p>
 
                     <div
                         ref={scrollContainerRef}
@@ -125,9 +125,9 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                                 <img src="/projet/rina3.jpg" alt="Photo de profil de Rina Rasolonjatovo" className="w-40 h-40 rounded-full object-cover border-4 border-white/10 relative z-10" />
                             </div>
                             <div className="max-w-md">
-                                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Rina Rasolonjatovo</h3>
-                                <p className="text-blue-400 font-medium mb-4 text-sm tracking-wide uppercase">Développeur Full-Stack</p>
-                                <p className="text-white/70 leading-relaxed font-light">
+                                <h3 className="text-xl md:text-3xl font-bold text-white mb-2">Rina Rasolonjatovo</h3>
+                                <p className="text-blue-400 font-medium mb-3 md:mb-4 text-xs md:text-sm tracking-wide uppercase">Développeur Full-Stack</p>
+                                <p className="text-white/70 leading-relaxed font-light text-xs md:text-base">
                                     Développeur Full-Stack avec une appétence pour le design et les belles interfaces. Voici un bref résumé de mon parcours et de mes compétences. N'hésitez pas à explorer mes projets et expériences.
                                 </p>
                             </div>
@@ -135,47 +135,47 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
 
                         {/* FORMATION & EXPERIENCES (TIMELINE COMBINED OR SEPARATED) */}
                         <div className="snap-center shrink-0 w-[92%] md:w-[600px] h-full bg-[#111111]/80 p-8 md:p-10 rounded-3xl border border-white/10 shadow-lg transition-transform duration-300 hover:bg-[#151515] hover:-translate-y-1 overflow-y-auto">
-                            <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+                            <h3 className="text-xl md:text-2xl font-bold text-white mb-6 md:mb-8 flex items-center gap-3">
                                 <span className="p-2 bg-blue-500/20 text-blue-400 rounded-lg">🎓</span>
                                 Formation & Diplômes
                             </h3>
                             <div className="relative border-l-2 border-white/10 pl-6 space-y-8 ml-3">
                                 <div className="relative">
                                     <div className="absolute -left-[33px] top-1 w-4 h-4 bg-blue-500 rounded-full ring-4 ring-black"></div>
-                                    <p className="text-sm text-blue-400 font-semibold mb-1">Octobre 2024 - Août 2025</p>
-                                    <p className="font-bold text-white text-lg">Bachelor Concepteur Développeur d'Applications</p>
-                                    <p className="text-white/60 font-light mt-1">CFA INGETIS Paris</p>
+                                    <p className="text-xs md:text-sm text-blue-400 font-semibold mb-1">Octobre 2024 - Août 2025</p>
+                                    <p className="font-bold text-white text-base md:text-lg">Bachelor Concepteur Développeur d'Applications</p>
+                                    <p className="text-white/60 font-light mt-1 text-xs md:text-base">CFA INGETIS Paris</p>
                                 </div>
                                 <div className="relative">
                                     <div className="absolute -left-[33px] top-1 w-4 h-4 bg-white/20 rounded-full ring-4 ring-black"></div>
-                                    <p className="text-sm text-white/50 font-semibold mb-1">Septembre 2022 - Juillet 2024</p>
-                                    <p className="font-bold text-white text-lg">BTS SIO – Solutions Logicielles et Applications</p>
-                                    <p className="text-white/60 font-light mt-1">CFA INGETIS Paris</p>
+                                    <p className="text-xs md:text-sm text-white/50 font-semibold mb-1">Septembre 2022 - Juillet 2024</p>
+                                    <p className="font-bold text-white text-base md:text-lg">BTS SIO – Solutions Logicielles et Applications</p>
+                                    <p className="text-white/60 font-light mt-1 text-xs md:text-base">CFA INGETIS Paris</p>
                                 </div>
                             </div>
 
-                            <h3 className="text-2xl font-bold text-white mt-12 mb-8 flex items-center gap-3">
+                            <h3 className="text-xl md:text-2xl font-bold text-white mt-8 md:mt-12 mb-6 md:mb-8 flex items-center gap-3">
                                 <span className="p-2 bg-indigo-500/20 text-indigo-400 rounded-lg">💼</span>
                                 Expérience Pro
                             </h3>
                             <div className="relative border-l-2 border-white/10 pl-6 space-y-8 ml-3">
                                 <div className="relative">
                                     <div className="absolute -left-[33px] top-1 w-4 h-4 bg-indigo-500 rounded-full ring-4 ring-black"></div>
-                                    <p className="text-sm text-indigo-400 font-semibold mb-1">Janvier - Mars 2025</p>
-                                    <p className="font-bold text-white text-lg">Stagiaire Développeur Web Fullstack</p>
-                                    <p className="text-white/60 font-light mt-1 mb-2">ADNCLY</p>
+                                    <p className="text-xs md:text-sm text-indigo-400 font-semibold mb-1">Janvier - Mars 2025</p>
+                                    <p className="font-bold text-white text-base md:text-lg">Stagiaire Développeur Web Fullstack</p>
+                                    <p className="text-white/60 font-light mt-1 mb-2 text-xs md:text-base">ADNCLY</p>
                                     <div className="flex flex-wrap gap-2">
-                                        <span className="px-2 py-1 bg-white/5 text-white/70 text-xs rounded-md">React</span>
-                                        <span className="px-2 py-1 bg-white/5 text-white/70 text-xs rounded-md">Node.js</span>
-                                        <span className="px-2 py-1 bg-white/5 text-white/70 text-xs rounded-md">MySQL</span>
-                                        <span className="px-2 py-1 bg-white/5 text-white/70 text-xs rounded-md">Agile</span>
+                                        <span className="px-2 py-1 bg-white/5 text-white/70 text-[10px] md:text-xs rounded-md">React</span>
+                                        <span className="px-2 py-1 bg-white/5 text-white/70 text-[10px] md:text-xs rounded-md">Node.js</span>
+                                        <span className="px-2 py-1 bg-white/5 text-white/70 text-[10px] md:text-xs rounded-md">MySQL</span>
+                                        <span className="px-2 py-1 bg-white/5 text-white/70 text-[10px] md:text-xs rounded-md">Agile</span>
                                     </div>
                                 </div>
                                 <div className="relative">
                                     <div className="absolute -left-[33px] top-1 w-4 h-4 bg-white/20 rounded-full ring-4 ring-black"></div>
-                                    <p className="text-sm text-white/50 font-semibold mb-1">Avril 2023 - Septembre 2024</p>
-                                    <p className="font-bold text-white text-lg">Technicien Informatique N1/N2</p>
-                                    <p className="text-white/60 font-light mt-1">MEDIABAR</p>
+                                    <p className="text-xs md:text-sm text-white/50 font-semibold mb-1">Avril 2023 - Septembre 2024</p>
+                                    <p className="font-bold text-white text-base md:text-lg">Technicien Informatique N1/N2</p>
+                                    <p className="text-white/60 font-light mt-1 text-xs md:text-base">MEDIABAR</p>
                                 </div>
                             </div>
                         </div>
@@ -188,34 +188,34 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                             </h3>
                             <div className="space-y-8">
                                 <div>
-                                    <p className="text-white/50 text-sm uppercase tracking-wider font-semibold mb-3">Frontend</p>
+                                    <p className="text-white/50 text-xs md:text-sm uppercase tracking-wider font-semibold mb-2 md:mb-3">Frontend</p>
                                     <div className="flex flex-wrap gap-2">
                                         {['React', 'TypeScript', 'Tailwind CSS', 'SASS', 'HTML5', 'CSS3', 'Framer Motion'].map(tech => (
-                                            <span key={tech} className="px-3 py-1.5 bg-blue-500/10 text-blue-300 border border-blue-500/20 rounded-lg text-sm font-medium hover:bg-blue-500/20 transition-colors">{tech}</span>
+                                            <span key={tech} className="px-3 py-1.5 bg-blue-500/10 text-blue-300 border border-blue-500/20 rounded-lg text-xs md:text-sm font-medium hover:bg-blue-500/20 transition-colors">{tech}</span>
                                         ))}
                                     </div>
                                 </div>
                                 <div>
-                                    <p className="text-white/50 text-sm uppercase tracking-wider font-semibold mb-3">Backend</p>
+                                    <p className="text-white/50 text-xs md:text-sm uppercase tracking-wider font-semibold mb-2 md:mb-3">Backend</p>
                                     <div className="flex flex-wrap gap-2">
                                         {['Node.js', 'NestJS', 'Express', 'Laravel', 'PHP', 'REST API'].map(tech => (
-                                            <span key={tech} className="px-3 py-1.5 bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 rounded-lg text-sm font-medium hover:bg-indigo-500/20 transition-colors">{tech}</span>
+                                            <span key={tech} className="px-3 py-1.5 bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 rounded-lg text-xs md:text-sm font-medium hover:bg-indigo-500/20 transition-colors">{tech}</span>
                                         ))}
                                     </div>
                                 </div>
                                 <div>
-                                    <p className="text-white/50 text-sm uppercase tracking-wider font-semibold mb-3">Databases</p>
+                                    <p className="text-white/50 text-xs md:text-sm uppercase tracking-wider font-semibold mb-2 md:mb-3">Databases</p>
                                     <div className="flex flex-wrap gap-2">
                                         {['MySQL', 'MariaDB', 'PostgreSQL', 'Redis', 'MongoDB', 'TypeORM'].map(tech => (
-                                            <span key={tech} className="px-3 py-1.5 bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 rounded-lg text-sm font-medium hover:bg-emerald-500/20 transition-colors">{tech}</span>
+                                            <span key={tech} className="px-3 py-1.5 bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 rounded-lg text-xs md:text-sm font-medium hover:bg-emerald-500/20 transition-colors">{tech}</span>
                                         ))}
                                     </div>
                                 </div>
                                 <div>
-                                    <p className="text-white/50 text-sm uppercase tracking-wider font-semibold mb-3">DevOps & Tools</p>
+                                    <p className="text-white/50 text-xs md:text-sm uppercase tracking-wider font-semibold mb-2 md:mb-3">DevOps & Tools</p>
                                     <div className="flex flex-wrap gap-2">
                                         {['Docker', 'Git', 'CI/CD', 'Agile', 'Vite', 'Webpack'].map(tech => (
-                                            <span key={tech} className="px-3 py-1.5 bg-white/5 text-white/80 border border-white/10 rounded-lg text-sm font-medium hover:bg-white/10 transition-colors">{tech}</span>
+                                            <span key={tech} className="px-3 py-1.5 bg-white/5 text-white/80 border border-white/10 rounded-lg text-xs md:text-sm font-medium hover:bg-white/10 transition-colors">{tech}</span>
                                         ))}
                                     </div>
                                 </div>
@@ -227,11 +227,11 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                             <div key={index} className="snap-center shrink-0 w-[92%] md:w-[600px] h-full bg-[#111111]/80 p-8 md:p-10 rounded-3xl border border-white/10 shadow-lg transition-transform duration-300 hover:bg-[#151515] hover:-translate-y-1 overflow-y-auto flex flex-col group/card">
                                 <div className="flex justify-between items-start mb-6">
                                     <div>
-                                        <div className="flex items-center gap-3 mb-2">
-                                            <span className="text-xs font-mono text-white/40">0{index + 1}</span>
-                                            <h3 className="text-2xl font-bold text-white group-hover/card:text-blue-400 transition-colors">{project.title}</h3>
+                                        <div className="flex items-center gap-3 mb-1 md:mb-2">
+                                            <span className="text-[10px] md:text-xs font-mono text-white/40">0{index + 1}</span>
+                                            <h3 className="text-xl md:text-2xl font-bold text-white group-hover/card:text-blue-400 transition-colors">{project.title}</h3>
                                         </div>
-                                        <p className="text-white/60 text-sm">{project.subtitle}</p>
+                                        <p className="text-white/60 text-xs md:text-sm">{project.subtitle}</p>
                                     </div>
                                     {project.github && project.github !== '#' && (
                                         <a
@@ -263,10 +263,10 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                                 <div className="space-y-4 flex-1">
                                     <div className="flex flex-wrap gap-2 mb-4">
                                         {project.tech.map(t => (
-                                            <span key={t} className="px-2.5 py-1 bg-white/[0.04] text-white/70 text-xs rounded-md border border-white/5">{t}</span>
+                                            <span key={t} className="px-2 md:px-2.5 py-1 bg-white/[0.04] text-white/70 text-[10px] md:text-xs rounded-md border border-white/5">{t}</span>
                                         ))}
                                     </div>
-                                    <p className="text-white/60 text-sm font-light leading-relaxed">{project.description}</p>
+                                    <p className="text-white/60 text-xs md:text-sm font-light leading-relaxed">{project.description}</p>
                                 </div>
                             </div>
                         ))}
@@ -274,11 +274,11 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                         {/* LANGUES & CONTACT COMBINED */}
                         <div className="snap-center shrink-0 w-[92%] md:w-[600px] h-full bg-[#111111]/80 p-8 md:p-10 rounded-3xl border border-white/10 shadow-lg transition-transform duration-300 hover:bg-[#151515] hover:-translate-y-1 overflow-y-auto flex flex-col justify-between">
                             <div>
-                                <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                                <h3 className="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-3">
                                     <span className="p-2 bg-emerald-500/20 text-emerald-400 rounded-lg">🌍</span>
                                     Langues
                                 </h3>
-                                <div className="space-y-4 mb-10">
+                                <div className="space-y-4 mb-10 text-sm md:text-base">
                                     <div className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5">
                                         <span className="font-semibold text-white">Français</span>
                                         <span className="text-emerald-400 text-sm font-medium bg-emerald-400/10 px-3 py-1 rounded-full">Natif</span>
@@ -295,7 +295,7 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                             </div>
 
                             <div>
-                                <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                                <h3 className="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-3">
                                     <span className="p-2 bg-blue-500/20 text-blue-400 rounded-lg">✉️</span>
                                     Contact
                                 </h3>
@@ -303,7 +303,7 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                                     <a
                                         href="mailto:rinatovo2103@gmail.com"
                                         onClick={(e) => e.stopPropagation()}
-                                        className="flex items-center gap-4 p-4 bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 rounded-xl transition-all duration-300 group cursor-pointer"
+                                        className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 rounded-xl transition-all duration-300 group cursor-pointer"
                                     >
                                         <div className="p-2 bg-white/5 rounded-lg group-hover:scale-110 transition-transform">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/70 group-hover:text-white">
@@ -312,8 +312,8 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                                             </svg>
                                         </div>
                                         <div className="flex-1">
-                                            <p className="text-white font-medium">Email</p>
-                                            <p className="text-white/50 text-sm font-light">rinatovo2103@gmail.com</p>
+                                            <p className="text-white font-medium text-sm md:text-base">Email</p>
+                                            <p className="text-white/50 text-xs md:text-sm font-light">rinatovo2103@gmail.com</p>
                                         </div>
                                     </a>
 
@@ -322,7 +322,7 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={(e) => e.stopPropagation()}
-                                        className="flex items-center gap-4 p-4 bg-white/5 hover:bg-[#0A66C2]/10 border border-white/5 hover:border-[#0A66C2]/30 rounded-xl transition-all duration-300 group cursor-pointer"
+                                        className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white/5 hover:bg-[#0A66C2]/10 border border-white/5 hover:border-[#0A66C2]/30 rounded-xl transition-all duration-300 group cursor-pointer"
                                     >
                                         <div className="p-2 bg-white/5 rounded-lg group-hover:scale-110 transition-transform">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-white/70 group-hover:text-[#0A66C2]">
@@ -330,8 +330,8 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                                             </svg>
                                         </div>
                                         <div className="flex-1">
-                                            <p className="text-white font-medium">LinkedIn</p>
-                                            <p className="text-white/50 text-sm font-light">rinatovo</p>
+                                            <p className="text-white font-medium text-sm md:text-base">LinkedIn</p>
+                                            <p className="text-white/50 text-xs md:text-sm font-light">rinatovo</p>
                                         </div>
                                     </a>
 
@@ -340,7 +340,7 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={(e) => e.stopPropagation()}
-                                        className="flex items-center gap-4 p-4 bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 rounded-xl transition-all duration-300 group cursor-pointer"
+                                        className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 rounded-xl transition-all duration-300 group cursor-pointer"
                                     >
                                         <div className="p-2 bg-white/5 rounded-lg group-hover:scale-110 transition-transform">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-white/70 group-hover:text-white">
@@ -348,8 +348,8 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                                             </svg>
                                         </div>
                                         <div className="flex-1">
-                                            <p className="text-white font-medium">GitHub</p>
-                                            <p className="text-white/50 text-sm font-light">Rinatovo</p>
+                                            <p className="text-white font-medium text-sm md:text-base">GitHub</p>
+                                            <p className="text-white/50 text-xs md:text-sm font-light">Rinatovo</p>
                                         </div>
                                     </a>
                                 </div>
