@@ -561,10 +561,10 @@ export default function GallerySection({ onBack }: GallerySectionProps) {
                             <FiX className="text-2xl" />
                         </button>
 
-                        {/* NAV PREV / NEXT */}
+                        {/* NAV PREV / NEXT (DESKTOP FLOATING SIDE ARROWS) */}
                         <button
                             onClick={(e) => { e.stopPropagation(); handlePrevPhoto(); }}
-                            className="absolute left-4 md:left-8 p-3 rounded-full bg-white/10 hover:bg-amber-500 text-white transition-colors z-50"
+                            className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 p-3.5 rounded-full bg-black/70 hover:bg-amber-500 text-white hover:text-black border border-white/20 transition-all z-50 shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95"
                             aria-label="Photo précédente"
                         >
                             <FiChevronLeft className="text-2xl" />
@@ -572,7 +572,7 @@ export default function GallerySection({ onBack }: GallerySectionProps) {
 
                         <button
                             onClick={(e) => { e.stopPropagation(); handleNextPhoto(); }}
-                            className="absolute right-4 md:right-8 p-3 rounded-full bg-white/10 hover:bg-amber-500 text-white transition-colors z-50"
+                            className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 p-3.5 rounded-full bg-black/70 hover:bg-amber-500 text-white hover:text-black border border-white/20 transition-all z-50 shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95"
                             aria-label="Photo suivante"
                         >
                             <FiChevronRight className="text-2xl" />
@@ -580,16 +580,39 @@ export default function GallerySection({ onBack }: GallerySectionProps) {
 
                         {/* CONTENT CONTAINER */}
                         <div
-                            className="relative max-w-6xl w-full max-h-[90vh] flex flex-col lg:flex-row items-center gap-6 bg-[#0c0c10] border border-white/10 rounded-3xl overflow-hidden shadow-2xl p-4 md:p-6"
+                            className="relative max-w-6xl w-full max-h-[92vh] flex flex-col lg:flex-row items-center gap-4 lg:gap-6 bg-[#0c0c10] border border-white/10 rounded-3xl overflow-hidden shadow-2xl p-4 md:p-6"
                             onClick={e => e.stopPropagation()}
                         >
-                            {/* IMAGE PREVIEW */}
-                            <div className="w-full lg:w-2/3 h-[50vh] lg:h-[75vh] flex items-center justify-center bg-black/60 rounded-2xl overflow-hidden relative">
+                            {/* IMAGE PREVIEW IN PURE WHITE PASSE-PARTOUT FRAME */}
+                            <div className="w-full lg:w-2/3 h-[45vh] sm:h-[55vh] lg:h-[75vh] flex flex-col items-center justify-center bg-white rounded-2xl overflow-hidden relative p-3 md:p-8 shadow-2xl border border-white/20">
                                 <img
                                     src={activePhoto.img}
-                                    alt={activePhoto.title}
-                                    className="w-full h-full object-contain max-h-full"
+                                    alt="Cliché original ERR.RAW"
+                                    className="max-w-full max-h-full object-contain rounded shadow-md"
                                 />
+                            </div>
+
+                            {/* NAVIGATION MOBILE TACTILE SOUS L'IMAGE (PRÉCÉDENTE / SUIVANTE) */}
+                            <div className="flex lg:hidden items-center justify-between w-full p-2 bg-white/5 rounded-2xl border border-white/10">
+                                <button
+                                    onClick={(e) => { e.stopPropagation(); handlePrevPhoto(); }}
+                                    className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-black font-mono text-xs font-bold transition-all border border-amber-500/30 active:scale-95"
+                                >
+                                    <FiChevronLeft className="text-lg" />
+                                    <span>Précédente</span>
+                                </button>
+
+                                <span className="text-xs font-mono font-bold text-gray-400">
+                                    {selectedPhotoIndex! + 1} / {filteredItems.length}
+                                </span>
+
+                                <button
+                                    onClick={(e) => { e.stopPropagation(); handleNextPhoto(); }}
+                                    className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-black font-mono text-xs font-bold transition-all border border-amber-500/30 active:scale-95"
+                                >
+                                    <span>Suivante</span>
+                                    <FiChevronRight className="text-lg" />
+                                </button>
                             </div>
 
                             {/* SIDE PANEL EXIF & DETAILS */}
