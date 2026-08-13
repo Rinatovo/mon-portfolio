@@ -31,8 +31,8 @@ export default function SocialLinks() {
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2, duration: 1 }}
-            className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex flex-col gap-2 md:gap-4"
+            transition={{ delay: 1.5, duration: 0.8 }}
+            className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex flex-row md:flex-col gap-2.5 md:gap-4 p-1.5 md:p-0 rounded-full bg-black/40 md:bg-transparent backdrop-blur-md md:backdrop-blur-none border border-white/10 md:border-none"
         >
             {socialLinks.map((link, index) => (
                 <a

@@ -36,18 +36,18 @@ export default function ClassSelection({ onSelect }: ClassSelectionProps) {
     };
 
     return (
-        <div className="relative w-full h-screen flex flex-col items-center justify-center p-4 md:p-10 z-20">
+        <div className="relative w-full min-h-screen flex flex-col items-center justify-center p-4 md:p-10 z-20 overflow-y-auto">
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"
-                className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16"
+                className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16 py-6"
             >
 
                 {/* DEVELOPER CLASS */}
                 <motion.div
                     variants={itemVariants}
-                    className="group relative w-full md:w-[500px] h-[240px] md:h-[600px] cursor-pointer perspective-1000"
+                    className="group relative w-full md:w-[500px] h-[210px] sm:h-[240px] md:h-[580px] cursor-pointer perspective-1000"
                     onMouseEnter={() => !isMobile && setHoveredClass('dev')}
                     onMouseLeave={() => !isMobile && setHoveredClass(null)}
                     onClick={() => onSelect('dev')}
@@ -119,7 +119,7 @@ export default function ClassSelection({ onSelect }: ClassSelectionProps) {
                 {/* PHOTOGRAPHER CLASS */}
                 <motion.div
                     variants={itemVariants}
-                    className="group relative w-full md:w-[500px] h-[240px] md:h-[600px] cursor-pointer perspective-1000"
+                    className="group relative w-full md:w-[500px] h-[210px] sm:h-[240px] md:h-[580px] cursor-pointer perspective-1000"
                     onMouseEnter={() => !isMobile && setHoveredClass('photo')}
                     onMouseLeave={() => !isMobile && setHoveredClass(null)}
                     onClick={() => onSelect('photo')}
