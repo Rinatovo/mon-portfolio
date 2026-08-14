@@ -18,7 +18,8 @@ import {
     FiShield, 
     FiServer, 
     FiX,
-    FiZap
+    FiZap,
+    FiMaximize2
 } from 'react-icons/fi';
 
 interface Project {
@@ -38,7 +39,7 @@ const projects: Project[] = [
     {
         id: "bookibox",
         title: "BookiBox",
-        subtitle: "Application Métier & Processing Asynchrone (En Production)",
+        subtitle: "Dev Fullstack & Chef de Projet Junior • App en Production",
         category: "fullstack",
         tech: ["Next.js", "NestJS", "TypeScript", "BullMQ", "Redis", "Docker", "Dilicom ONIX", "IA", "Jira"],
         description: "Développement d'une application métier en Next.js / NestJS (TypeScript) déployée en production. Intégration d'un module de scan via l'API Dilicom (ONIX) avec algorithme de matching stock/abonnés, architecture de tâches asynchrones BullMQ & Redis, et enrichissement IA en tâche de fond.",
@@ -110,6 +111,7 @@ interface ProfileSectionProps {
 export default function ProfileSection({ onBack }: ProfileSectionProps) {
     const [selectedCategory, setSelectedCategory] = useState<'all' | 'backend' | 'fullstack' | 'frontend'>('all');
     const [activeProject, setActiveProject] = useState<Project | null>(null);
+    const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
     const filteredProjects = projects.filter(p =>
         selectedCategory === 'all' ? true : p.category === selectedCategory
@@ -243,12 +245,19 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-3xl blur-2xl opacity-30 group-hover:opacity-60 transition-opacity duration-500" />
                                 
                                 <div className="relative p-6 rounded-3xl bg-[#10121a]/90 border border-white/10 flex flex-col items-center text-center space-y-4 shadow-2xl">
-                                    <div className="relative w-36 h-36 rounded-2xl overflow-hidden border-2 border-blue-500/40 shadow-inner">
+                                    <div 
+                                        onClick={() => setZoomedImage('/projet/rina3.jpg')}
+                                        className="relative w-36 h-36 rounded-2xl overflow-hidden border-2 border-blue-500/40 shadow-inner cursor-pointer group/avatar"
+                                    >
                                         <img
                                             src="/projet/rina3.jpg"
                                             alt="Rina Rasolonjatovo"
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                            className="w-full h-full object-cover transition-transform duration-500 group-hover/avatar:scale-105"
                                         />
+                                        <div className="absolute inset-0 bg-blue-950/60 opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white gap-1">
+                                            <FiMaximize2 className="text-xl text-blue-400" />
+                                            <span className="text-[10px] font-mono uppercase tracking-wider font-semibold">Agrandir</span>
+                                        </div>
                                     </div>
 
                                     <div>
@@ -380,12 +389,19 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
 
                                         {/* IMAGE PREVIEW IF ANY */}
                                         {project.image && (
-                                            <div className="w-full h-40 rounded-2xl overflow-hidden bg-black/40 border border-white/5 relative group-hover:border-blue-500/30 transition-colors">
+                                            <div 
+                                                onClick={(e) => { e.stopPropagation(); setZoomedImage(project.image); }}
+                                                className="w-full h-40 rounded-2xl overflow-hidden bg-black/40 border border-white/5 relative group-hover:border-blue-500/30 transition-colors cursor-pointer group/img"
+                                            >
                                                 <img
                                                     src={project.image}
                                                     alt={project.title}
-                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                                    className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500"
                                                 />
+                                                <div className="absolute inset-0 bg-blue-950/60 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white text-xs font-mono">
+                                                    <FiMaximize2 className="text-lg text-blue-400" />
+                                                    <span>Voir en grand</span>
+                                                </div>
                                             </div>
                                         )}
 
@@ -543,7 +559,7 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                                 <div className="relative">
                                     <div className="absolute -left-[31px] top-1.5 w-3.5 h-3.5 bg-blue-500 rounded-full ring-4 ring-[#07080d]" />
                                     <span className="text-xs font-mono text-blue-400 font-semibold block mb-1">Stage - 4 Mois (2025)</span>
-                                    <h4 className="text-lg font-bold text-white">Développeur Web Fullstack</h4>
+                                    <h4 className="text-lg font-bold text-white">Développeur Web Fullstack & Chef de Projet Junior</h4>
                                     <p className="text-xs text-gray-400 font-mono mt-0.5 mb-2">BookiBox</p>
                                     <ul className="text-xs text-gray-300 font-light space-y-1.5 mb-3 list-disc list-inside">
                                         <li>Développement d'une application métier en Next.js / NestJS (TypeScript) en production</li>
@@ -741,12 +757,19 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                             </div>
 
                             {activeProject.image && (
-                                <div className="w-full h-48 md:h-64 rounded-2xl overflow-hidden bg-black/50 border border-white/10">
+                                <div 
+                                    onClick={() => setZoomedImage(activeProject.image!)}
+                                    className="w-full h-48 md:h-64 rounded-2xl overflow-hidden bg-black/50 border border-white/10 cursor-pointer group relative"
+                                >
                                     <img
                                         src={activeProject.image}
                                         alt={activeProject.title}
-                                        className="w-full h-full object-cover"
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
+                                    <div className="absolute inset-0 bg-blue-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white text-xs font-mono">
+                                        <FiMaximize2 className="text-xl text-blue-400" />
+                                        <span>Voir en plein écran</span>
+                                    </div>
                                 </div>
                             )}
 
@@ -797,6 +820,32 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                                 )}
                             </div>
                         </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+            {/* FULLSCREEN IMAGE ZOOM MODAL */}
+            <AnimatePresence>
+                {zoomedImage && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[20000] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4"
+                        onClick={() => setZoomedImage(null)}
+                    >
+                        <button
+                            onClick={() => setZoomedImage(null)}
+                            className="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-blue-500 text-white transition-colors z-50 shadow-lg"
+                            aria-label="Fermer"
+                        >
+                            <FiX className="text-2xl" />
+                        </button>
+                        <img
+                            src={zoomedImage}
+                            alt="Photo agrandie"
+                            className="max-w-[95vw] max-h-[92vh] object-contain rounded-2xl shadow-2xl border border-white/10"
+                            onClick={(e) => e.stopPropagation()}
+                        />
                     </motion.div>
                 )}
             </AnimatePresence>

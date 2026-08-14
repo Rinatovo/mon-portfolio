@@ -246,6 +246,7 @@ export default function GallerySection({ onBack }: GallerySectionProps) {
     const BATCH_SIZE = 9;
     const [selectedCategory, setSelectedCategory] = useState<'all' | 'marque' | 'portrait' | 'event' | 'landscape'>('all');
     const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
+    const [isZoomed, setIsZoomed] = useState<boolean>(false);
     const [visibleCount, setVisibleCount] = useState<number>(BATCH_SIZE);
 
     const filteredItems = galleryItems.filter(item => 
@@ -284,11 +285,17 @@ export default function GallerySection({ onBack }: GallerySectionProps) {
             if (selectedPhotoIndex === null) return;
             if (e.key === 'ArrowRight') handleNextPhoto();
             if (e.key === 'ArrowLeft') handlePrevPhoto();
-            if (e.key === 'Escape') setSelectedPhotoIndex(null);
+            if (e.key === 'Escape') {
+                if (isZoomed) {
+                    setIsZoomed(false);
+                } else {
+                    setSelectedPhotoIndex(null);
+                }
+            }
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [selectedPhotoIndex, filteredItems.length]);
+    }, [selectedPhotoIndex, filteredItems.length, isZoomed]);
 
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
@@ -542,137 +549,208 @@ export default function GallerySection({ onBack }: GallerySectionProps) {
                 </section>
             </main>
 
-            {/* LIGHTBOX MODAL (AVEC EXIF ET FORMAT REEL) */}
+            {/* LIGHTBOX MODAL (AVEC EXIF ET FORMAT REEL / PLEIN ÉCRAN MOBILE) */}
             <AnimatePresence>
                 {activePhoto && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[10000] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 md:p-8"
-                        onClick={() => setSelectedPhotoIndex(null)}
+                        className="fixed inset-0 z-[10000] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-2 sm:p-4 md:p-8"
+                        onClick={() => { setSelectedPhotoIndex(null); setIsZoomed(false); }}
                     >
-                        {/* CLOSE BUTTON */}
-                        <button
-                            onClick={() => setSelectedPhotoIndex(null)}
-                            className="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-amber-500 text-white transition-colors z-50"
-                            aria-label="Fermer"
-                        >
-                            <FiX className="text-2xl" />
-                        </button>
+                        {/* FULLSCREEN ZOOM MODE OVERLAY */}
+                        {isZoomed ? (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                className="fixed inset-0 z-[20000] bg-black/98 backdrop-blur-2xl flex flex-col items-center justify-center p-2 sm:p-4 select-none"
+                                onClick={(e) => { e.stopPropagation(); setIsZoomed(false); }}
+                            >
+                                {/* TOP TOOLBAR */}
+                                <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-50">
+                                    <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/70 border border-white/20 backdrop-blur-md text-xs font-mono text-amber-400">
+                                        <FiMaximize2 />
+                                        <span>Plein Écran ({selectedPhotoIndex! + 1} / {filteredItems.length})</span>
+                                    </div>
+                                    <button
+                                        onClick={(e) => { e.stopPropagation(); setIsZoomed(false); }}
+                                        className="p-3 rounded-full bg-white/10 hover:bg-amber-500 text-white hover:text-black transition-colors"
+                                        aria-label="Réduire"
+                                    >
+                                        <FiX className="text-2xl" />
+                                    </button>
+                                </div>
 
-                        {/* NAV PREV / NEXT (DESKTOP FLOATING SIDE ARROWS) */}
-                        <button
-                            onClick={(e) => { e.stopPropagation(); handlePrevPhoto(); }}
-                            className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 p-3.5 rounded-full bg-black/70 hover:bg-amber-500 text-white hover:text-black border border-white/20 transition-all z-50 shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95"
-                            aria-label="Photo précédente"
-                        >
-                            <FiChevronLeft className="text-2xl" />
-                        </button>
-
-                        <button
-                            onClick={(e) => { e.stopPropagation(); handleNextPhoto(); }}
-                            className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 p-3.5 rounded-full bg-black/70 hover:bg-amber-500 text-white hover:text-black border border-white/20 transition-all z-50 shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95"
-                            aria-label="Photo suivante"
-                        >
-                            <FiChevronRight className="text-2xl" />
-                        </button>
-
-                        {/* CONTENT CONTAINER */}
-                        <div
-                            className="relative max-w-6xl w-full max-h-[92vh] flex flex-col lg:flex-row items-center gap-4 lg:gap-6 bg-[#0c0c10] border border-white/10 rounded-3xl overflow-hidden shadow-2xl p-4 md:p-6"
-                            onClick={e => e.stopPropagation()}
-                        >
-                            {/* IMAGE PREVIEW IN PURE WHITE PASSE-PARTOUT FRAME */}
-                            <div className="w-full lg:w-2/3 h-[45vh] sm:h-[55vh] lg:h-[75vh] flex flex-col items-center justify-center bg-white rounded-2xl overflow-hidden relative p-3 md:p-8 shadow-2xl border border-white/20">
-                                <img
-                                    src={activePhoto.img}
-                                    alt="Cliché original ERR.RAW"
-                                    className="max-w-full max-h-full object-contain rounded shadow-md"
-                                />
-                            </div>
-
-                            {/* NAVIGATION MOBILE TACTILE SOUS L'IMAGE (PRÉCÉDENTE / SUIVANTE) */}
-                            <div className="flex lg:hidden items-center justify-between w-full p-2 bg-white/5 rounded-2xl border border-white/10">
+                                {/* NAV ARROWS IN ZOOM MODE */}
                                 <button
                                     onClick={(e) => { e.stopPropagation(); handlePrevPhoto(); }}
-                                    className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-black font-mono text-xs font-bold transition-all border border-amber-500/30 active:scale-95"
+                                    className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 p-3 sm:p-4 rounded-full bg-black/70 hover:bg-amber-500 text-white hover:text-black border border-white/20 transition-all z-50 backdrop-blur-md"
+                                    aria-label="Photo précédente"
                                 >
-                                    <FiChevronLeft className="text-lg" />
-                                    <span>Précédente</span>
+                                    <FiChevronLeft className="text-2xl sm:text-3xl" />
                                 </button>
-
-                                <span className="text-xs font-mono font-bold text-gray-400">
-                                    {selectedPhotoIndex! + 1} / {filteredItems.length}
-                                </span>
 
                                 <button
                                     onClick={(e) => { e.stopPropagation(); handleNextPhoto(); }}
-                                    className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-black font-mono text-xs font-bold transition-all border border-amber-500/30 active:scale-95"
+                                    className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 p-3 sm:p-4 rounded-full bg-black/70 hover:bg-amber-500 text-white hover:text-black border border-white/20 transition-all z-50 backdrop-blur-md"
+                                    aria-label="Photo suivante"
                                 >
-                                    <span>Suivante</span>
-                                    <FiChevronRight className="text-lg" />
+                                    <FiChevronRight className="text-2xl sm:text-3xl" />
                                 </button>
-                            </div>
 
-                            {/* SIDE PANEL EXIF & DETAILS */}
-                            <div className="w-full lg:w-1/3 flex flex-col justify-between space-y-6 p-2 md:p-4 text-left">
-                                <div className="space-y-4">
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-xs font-mono uppercase tracking-widest text-amber-400 px-2.5 py-1 rounded bg-amber-500/10 border border-amber-500/30">
-                                            {activePhoto.category === 'marque' ? 'MARQUE & ÉDITO' : activePhoto.category.toUpperCase()}
-                                        </span>
-                                        <span className="text-xs font-mono text-gray-500">
+                                {/* FULLSCREEN IMAGE */}
+                                <div 
+                                    className="w-full h-full max-w-[98vw] max-h-[94vh] flex items-center justify-center cursor-zoom-out p-1"
+                                    onClick={(e) => { e.stopPropagation(); setIsZoomed(false); }}
+                                >
+                                    <img
+                                        src={activePhoto.img}
+                                        alt="Photographie grand format ERR.RAW"
+                                        className="max-w-full max-h-full object-contain shadow-2xl rounded-lg"
+                                    />
+                                </div>
+
+                                <span className="absolute bottom-4 text-[11px] font-mono text-gray-400 bg-black/70 px-3.5 py-1 rounded-full border border-white/10">
+                                    Toucher la photo pour revenir aux détails EXIF
+                                </span>
+                            </motion.div>
+                        ) : (
+                            <>
+                                {/* CLOSE BUTTON */}
+                                <button
+                                    onClick={() => { setSelectedPhotoIndex(null); setIsZoomed(false); }}
+                                    className="absolute top-4 right-4 sm:top-6 sm:right-6 p-3 rounded-full bg-white/10 hover:bg-amber-500 text-white transition-colors z-50"
+                                    aria-label="Fermer"
+                                >
+                                    <FiX className="text-2xl" />
+                                </button>
+
+                                {/* NAV PREV / NEXT (DESKTOP FLOATING SIDE ARROWS) */}
+                                <button
+                                    onClick={(e) => { e.stopPropagation(); handlePrevPhoto(); }}
+                                    className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 p-3.5 rounded-full bg-black/70 hover:bg-amber-500 text-white hover:text-black border border-white/20 transition-all z-50 shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95"
+                                    aria-label="Photo précédente"
+                                >
+                                    <FiChevronLeft className="text-2xl" />
+                                </button>
+
+                                <button
+                                    onClick={(e) => { e.stopPropagation(); handleNextPhoto(); }}
+                                    className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 p-3.5 rounded-full bg-black/70 hover:bg-amber-500 text-white hover:text-black border border-white/20 transition-all z-50 shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95"
+                                    aria-label="Photo suivante"
+                                >
+                                    <FiChevronRight className="text-2xl" />
+                                </button>
+
+                                {/* CONTENT CONTAINER */}
+                                <div
+                                    className="relative max-w-6xl w-full max-h-[92vh] flex flex-col lg:flex-row items-center gap-4 lg:gap-6 bg-[#0c0c10] border border-white/10 rounded-3xl overflow-y-auto lg:overflow-hidden shadow-2xl p-4 md:p-6"
+                                    onClick={e => e.stopPropagation()}
+                                >
+                                    {/* IMAGE PREVIEW IN WHITE PASSE-PARTOUT FRAME (CLICKABLE TO ZOOM FULLSCREEN) */}
+                                    <div 
+                                        onClick={() => setIsZoomed(true)}
+                                        className="w-full lg:w-2/3 h-[50vh] sm:h-[60vh] lg:h-[75vh] flex flex-col items-center justify-center bg-white rounded-2xl overflow-hidden relative p-3 md:p-8 shadow-2xl border border-white/20 cursor-pointer group"
+                                    >
+                                        <img
+                                            src={activePhoto.img}
+                                            alt="Cliché original ERR.RAW"
+                                            className="max-w-full max-h-full object-contain rounded shadow-md group-hover:scale-[1.02] transition-transform duration-300"
+                                        />
+                                        <button
+                                            onClick={(e) => { e.stopPropagation(); setIsZoomed(true); }}
+                                            className="absolute bottom-3 right-3 px-3.5 py-1.5 rounded-full bg-black/80 backdrop-blur-md text-amber-400 text-xs font-mono flex items-center gap-2 border border-amber-500/40 shadow-xl group-hover:bg-amber-500 group-hover:text-black transition-all"
+                                        >
+                                            <FiMaximize2 className="text-sm" />
+                                            <span>Plein Écran</span>
+                                        </button>
+                                    </div>
+
+                                    {/* NAVIGATION MOBILE TACTILE SOUS L'IMAGE (PRÉCÉDENTE / SUIVANTE) */}
+                                    <div className="flex lg:hidden items-center justify-between w-full p-2 bg-white/5 rounded-2xl border border-white/10">
+                                        <button
+                                            onClick={(e) => { e.stopPropagation(); handlePrevPhoto(); }}
+                                            className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-black font-mono text-xs font-bold transition-all border border-amber-500/30 active:scale-95"
+                                        >
+                                            <FiChevronLeft className="text-lg" />
+                                            <span>Précédente</span>
+                                        </button>
+
+                                        <span className="text-xs font-mono font-bold text-gray-400">
                                             {selectedPhotoIndex! + 1} / {filteredItems.length}
                                         </span>
+
+                                        <button
+                                            onClick={(e) => { e.stopPropagation(); handleNextPhoto(); }}
+                                            className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-black font-mono text-xs font-bold transition-all border border-amber-500/30 active:scale-95"
+                                        >
+                                            <span>Suivante</span>
+                                            <FiChevronRight className="text-lg" />
+                                        </button>
+                                    </div>
+
+                                    {/* SIDE PANEL EXIF & DETAILS */}
+                                    <div className="w-full lg:w-1/3 flex flex-col justify-between space-y-6 p-2 md:p-4 text-left">
+                                        <div className="space-y-4">
+                                            <div className="flex items-center justify-between">
+                                                <span className="text-xs font-mono uppercase tracking-widest text-amber-400 px-2.5 py-1 rounded bg-amber-500/10 border border-amber-500/30">
+                                                    {activePhoto.category === 'marque' ? 'MARQUE & ÉDITO' : activePhoto.category.toUpperCase()}
+                                                </span>
+                                                <span className="text-xs font-mono text-gray-500">
+                                                    {selectedPhotoIndex! + 1} / {filteredItems.length}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        {/* EXIF DATA GRID */}
+                                        <div className="space-y-3 pt-4 border-t border-white/10">
+                                            <span className="text-xs font-mono text-gray-400 uppercase tracking-wider block">
+                                                Données EXIF / Fiche Œuvre
+                                            </span>
+
+                                            <div className="grid grid-cols-2 gap-3 text-xs font-mono">
+                                                <div className="p-2.5 rounded-xl bg-white/5 border border-white/5 space-y-0.5">
+                                                    <span className="text-gray-500 text-[10px] block">BOÎTIER</span>
+                                                    <span className="text-gray-200 font-semibold">{activePhoto.exif.camera}</span>
+                                                </div>
+
+                                                <div className="p-2.5 rounded-xl bg-white/5 border border-white/5 space-y-0.5">
+                                                    <span className="text-gray-500 text-[10px] block">OBJECTIF</span>
+                                                    <span className="text-gray-200 font-semibold">{activePhoto.exif.lens}</span>
+                                                </div>
+
+                                                <div className="p-2.5 rounded-xl bg-white/5 border border-white/5 space-y-0.5">
+                                                    <span className="text-gray-500 text-[10px] block">OUVERTURE</span>
+                                                    <span className="text-amber-400 font-semibold">{activePhoto.exif.aperture}</span>
+                                                </div>
+
+                                                <div className="p-2.5 rounded-xl bg-white/5 border border-white/5 space-y-0.5">
+                                                    <span className="text-gray-500 text-[10px] block">VITESSE</span>
+                                                    <span className="text-orange-300 font-semibold">{activePhoto.exif.shutter}</span>
+                                                </div>
+
+                                                <div className="p-2.5 rounded-xl bg-white/5 border border-white/5 space-y-0.5">
+                                                    <span className="text-gray-500 text-[10px] block">ORIENTATION</span>
+                                                    <span className="text-gray-200 font-semibold uppercase">{activePhoto.orientation}</span>
+                                                </div>
+
+                                                <div className="p-2.5 rounded-xl bg-white/5 border border-white/5 space-y-0.5">
+                                                    <span className="text-gray-500 text-[10px] block">QUALITÉ</span>
+                                                    <span className="text-emerald-400 font-semibold">RAW 14-bit</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="pt-2 flex items-center justify-between text-xs font-mono text-gray-500">
+                                            <span>← → Flèches</span>
+                                            <span>Échap pour fermer</span>
+                                        </div>
                                     </div>
                                 </div>
-
-                                {/* EXIF DATA GRID */}
-                                <div className="space-y-3 pt-4 border-t border-white/10">
-                                    <span className="text-xs font-mono text-gray-400 uppercase tracking-wider block">
-                                        Données EXIF / Fiche Œuvre
-                                    </span>
-
-                                    <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-                                        <div className="p-2.5 rounded-xl bg-white/5 border border-white/5 space-y-0.5">
-                                            <span className="text-gray-500 text-[10px] block">BOÎTIER</span>
-                                            <span className="text-gray-200 font-semibold">{activePhoto.exif.camera}</span>
-                                        </div>
-
-                                        <div className="p-2.5 rounded-xl bg-white/5 border border-white/5 space-y-0.5">
-                                            <span className="text-gray-500 text-[10px] block">OBJECTIF</span>
-                                            <span className="text-gray-200 font-semibold">{activePhoto.exif.lens}</span>
-                                        </div>
-
-                                        <div className="p-2.5 rounded-xl bg-white/5 border border-white/5 space-y-0.5">
-                                            <span className="text-gray-500 text-[10px] block">OUVERTURE</span>
-                                            <span className="text-amber-400 font-semibold">{activePhoto.exif.aperture}</span>
-                                        </div>
-
-                                        <div className="p-2.5 rounded-xl bg-white/5 border border-white/5 space-y-0.5">
-                                            <span className="text-gray-500 text-[10px] block">VITESSE</span>
-                                            <span className="text-orange-300 font-semibold">{activePhoto.exif.shutter}</span>
-                                        </div>
-
-                                        <div className="p-2.5 rounded-xl bg-white/5 border border-white/5 space-y-0.5">
-                                            <span className="text-gray-500 text-[10px] block">ORIENTATION</span>
-                                            <span className="text-gray-200 font-semibold uppercase">{activePhoto.orientation}</span>
-                                        </div>
-
-                                        <div className="p-2.5 rounded-xl bg-white/5 border border-white/5 space-y-0.5">
-                                            <span className="text-gray-500 text-[10px] block">QUALITÉ</span>
-                                            <span className="text-emerald-400 font-semibold">RAW 14-bit</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="pt-2 flex items-center justify-between text-xs font-mono text-gray-500">
-                                    <span>← → Flèches</span>
-                                    <span>Échap pour fermer</span>
-                                </div>
-                            </div>
-                        </div>
+                            </>
+                        )}
                     </motion.div>
                 )}
             </AnimatePresence>
