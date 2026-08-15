@@ -141,7 +141,6 @@ class RetroEffectImpl extends Effect {
       ['pixelSize', new THREE.Uniform(2.0)]
     ]);
     super('RetroEffect', ditherFragmentShader, { uniforms });
-    this.uniforms = uniforms;
   }
 
   set colorNum(v: number) {
@@ -158,7 +157,7 @@ class RetroEffectImpl extends Effect {
   }
 }
 
-const WrappedRetro = wrapEffect(RetroEffectImpl);
+const WrappedRetro = wrapEffect(RetroEffectImpl) as any;
 
 interface RetroEffectProps {
   colorNum?: number;
