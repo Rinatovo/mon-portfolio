@@ -650,15 +650,15 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                             href="https://github.com/Rinatovo"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-8 rounded-3xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10 hover:border-blue-500/40 transition-all flex flex-col justify-between space-y-6 group hover:scale-[1.02]"
+                            className="p-8 rounded-3xl bg-white border border-slate-200 hover:border-blue-400 transition-all flex flex-col justify-between space-y-6 group hover:scale-[1.02] shadow-sm"
                         >
-                            <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-200 text-xl group-hover:scale-110 transition-transform">
+                            <div className="w-12 h-12 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700 text-xl group-hover:scale-110 transition-transform">
                                 <FiGithub />
                             </div>
                             <div>
-                                <span className="text-xs font-mono text-gray-400 uppercase tracking-widest block mb-1">GITHUB PROFIL</span>
-                                <h4 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">Explorer mes dépôts</h4>
-                                <p className="text-xs text-gray-400 font-mono mt-1">github.com/Rinatovo</p>
+                                <span className="text-xs font-mono text-slate-400 uppercase tracking-widest block mb-1">GITHUB PROFIL</span>
+                                <h4 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Explorer mes dépôts</h4>
+                                <p className="text-xs text-slate-600 font-mono mt-1">github.com/Rinatovo</p>
                             </div>
                         </a>
 
@@ -666,20 +666,20 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                             href="/projet/CVRINA.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-8 rounded-3xl bg-white/[0.02] border border-white/10 hover:border-blue-500/40 transition-all flex flex-col justify-between space-y-6 group hover:scale-[1.02]"
+                            className="p-8 rounded-3xl bg-white border border-slate-200 hover:border-blue-400 transition-all flex flex-col justify-between space-y-6 group hover:scale-[1.02] shadow-sm"
                         >
                             <div className="flex items-center justify-between">
-                                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl group-hover:scale-110 transition-transform">
+                                <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 text-xl group-hover:scale-110 transition-transform">
                                     <FiExternalLink />
                                 </div>
-                                <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-mono">
+                                <span className="px-3 py-1 rounded-full bg-blue-100 text-blue-700 border border-blue-200 text-xs font-mono font-medium">
                                     PDF
                                 </span>
                             </div>
                             <div>
-                                <span className="text-xs font-mono text-blue-400 uppercase tracking-widest block mb-1">CURRICULUM VITAE</span>
-                                <h4 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">Télécharger mon CV</h4>
-                                <p className="text-xs text-gray-400 font-light mt-1">Consulter le CV complet.</p>
+                                <span className="text-xs font-mono text-blue-600 uppercase tracking-widest block mb-1">CURRICULUM VITAE</span>
+                                <h4 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Télécharger mon CV</h4>
+                                <p className="text-xs text-slate-600 font-light mt-1">Consulter le CV complet.</p>
                             </div>
                         </a>
                     </div>
@@ -693,33 +693,33 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[10000] bg-black/90 backdrop-blur-2xl flex items-center justify-center p-4 md:p-8"
+                        className="fixed inset-0 z-[10000] bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
                         onClick={() => setActiveProject(null)}
                     >
                         <motion.div
                             initial={{ scale: 0.95, y: 20 }}
                             animate={{ scale: 1, y: 0 }}
                             exit={{ scale: 0.95, y: 20 }}
-                            className="relative max-w-3xl w-full max-h-[85vh] overflow-y-auto bg-black border border-white/15 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl"
+                            className="relative max-w-3xl w-full max-h-[85vh] overflow-y-auto bg-white border border-slate-200 text-slate-900 rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl"
                             onClick={e => e.stopPropagation()}
                         >
                             {/* CLOSE BUTTON */}
                             <button
                                 onClick={() => setActiveProject(null)}
-                                className="absolute top-6 right-6 p-2.5 rounded-full bg-white/10 hover:bg-blue-500 text-white transition-colors"
+                                className="absolute top-6 right-6 p-2.5 rounded-full bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 transition-colors"
                                 aria-label="Fermer"
                             >
                                 <FiX className="text-xl" />
                             </button>
 
                             <div className="space-y-2">
-                                <span className="text-xs font-mono uppercase tracking-widest text-blue-400 px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 inline-block font-semibold">
+                                <span className="text-xs font-mono uppercase tracking-widest text-blue-600 px-2.5 py-1 rounded bg-blue-50 border border-blue-200 inline-block font-semibold">
                                     {activeProject.category.toUpperCase()}
                                 </span>
-                                <h3 className="text-3xl font-black text-white tracking-tight">
+                                <h3 className="text-3xl font-black text-slate-900 tracking-tight">
                                     {activeProject.title}
                                 </h3>
-                                <p className="text-sm font-mono text-gray-400">
+                                <p className="text-sm font-mono text-slate-500">
                                     {activeProject.subtitle}
                                 </p>
                             </div>
@@ -727,38 +727,38 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                             {activeProject.image && (
                                 <div 
                                     onClick={() => setZoomedImage(activeProject.image!)}
-                                    className="w-full h-48 md:h-64 rounded-2xl overflow-hidden bg-black/50 border border-white/10 cursor-pointer group relative"
+                                    className="w-full h-48 md:h-64 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 cursor-pointer group relative"
                                 >
                                     <img
                                         src={activeProject.image}
                                         alt={activeProject.title}
                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
-                                    <div className="absolute inset-0 bg-blue-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white text-xs font-mono">
-                                        <FiMaximize2 className="text-xl text-blue-400" />
+                                    <div className="absolute inset-0 bg-blue-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 text-white text-xs font-mono">
+                                        <FiMaximize2 className="text-xl text-blue-300" />
                                         <span>Voir en plein écran</span>
                                     </div>
                                 </div>
                             )}
 
                             <div className="space-y-4">
-                                <h4 className="text-sm font-mono text-gray-400 uppercase tracking-wider">
+                                <h4 className="text-sm font-mono text-slate-500 uppercase tracking-wider">
                                     Description Fonctionnelle & Technique
                                 </h4>
-                                <p className="text-sm text-gray-300 font-light leading-relaxed">
+                                <p className="text-sm text-slate-600 font-light leading-relaxed">
                                     {activeProject.description}
                                 </p>
                             </div>
 
                             {activeProject.architectureDetails && (
-                                <div className="space-y-3 pt-4 border-t border-white/10">
-                                    <h4 className="text-sm font-mono text-blue-400 uppercase tracking-wider">
+                                <div className="space-y-3 pt-4 border-t border-slate-200">
+                                    <h4 className="text-sm font-mono text-blue-600 uppercase tracking-wider">
                                         Points Clés de l'Architecture
                                     </h4>
-                                    <ul className="space-y-2 text-xs font-mono text-gray-300">
+                                    <ul className="space-y-2 text-xs font-mono text-slate-700">
                                         {activeProject.architectureDetails.map((detail, i) => (
                                             <li key={i} className="flex items-start gap-2.5">
-                                                <FiCheck className="text-blue-400 shrink-0 mt-0.5 text-sm" />
+                                                <FiCheck className="text-blue-600 shrink-0 mt-0.5 text-sm" />
                                                 <span>{detail}</span>
                                             </li>
                                         ))}
@@ -766,10 +766,10 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                                 </div>
                             )}
 
-                            <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                            <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
                                 <div className="flex flex-wrap gap-1.5">
                                     {activeProject.tech.map(t => (
-                                        <span key={t} className="px-2.5 py-1 rounded-lg bg-blue-500/10 text-blue-300 border border-blue-500/20 text-xs font-mono">
+                                        <span key={t} className="px-2.5 py-1 rounded-lg bg-blue-50 text-blue-700 border border-blue-200 text-xs font-mono font-medium">
                                             {t}
                                         </span>
                                     ))}
@@ -780,7 +780,7 @@ export default function ProfileSection({ onBack }: ProfileSectionProps) {
                                         href={activeProject.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-bold transition-all flex items-center gap-2"
+                                        className="px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-mono text-xs font-bold transition-all flex items-center gap-2 shadow-xs"
                                     >
                                         <FiGithub />
                                         <span>Voir le Code</span>
