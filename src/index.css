@@ -2,6 +2,6 @@
 
 /* Ensure the app background covers the whole viewport (prevents white bars on mobile) */
 html, body, #root {
-	background: #020202;
+	background: #000000;
 	height: 100%;
 }

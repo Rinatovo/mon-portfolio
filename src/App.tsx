@@ -26,11 +26,11 @@ export default function App() {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-[#020202] text-white overflow-hidden font-sans flex flex-col items-center justify-center">
+    <div className="relative w-full min-h-screen bg-black text-white overflow-hidden font-sans flex flex-col items-center justify-center">
 
       {/* Background Effect (Persistent) */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#020202] via-[#0a0a1a] to-[#1a0a1a] opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-[#030712] to-black opacity-90" />
         <StarField speed={2} starCount={1500} />
       </div>
 
